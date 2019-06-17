@@ -1,0 +1,47 @@
+/*---- GLOBAL STYLES ---- */
+
+/* Roboto: clean and functional */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- COMMON ----  */
+
+h1 {
+  margin: 60px auto;
+  text-align: center;
+  font-size: 160%;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 120%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* landing section */
+
+header {
+  background-image: url("../images/landing-background.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  height: 100vh;
+}
