@@ -45,3 +45,10 @@ header {
   background-attachment: fixed;
   height: 100vh;
 }
+
+/* FOOTER */
+
+footer {
+  background: #fff;
+  font-size: 0.7rem;
+}
