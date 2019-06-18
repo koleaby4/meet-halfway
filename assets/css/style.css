@@ -14,7 +14,6 @@ html {
 }
 
 html {
-  background-color: #fff;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -24,7 +23,8 @@ html {
 /* ---- COMMON ----  */
 
 h1 {
-  margin: 60px auto;
+  margin: 0 auto;
+  padding: 60px 0;
   text-align: center;
   font-size: 160%;
   text-transform: uppercase;
@@ -36,7 +36,7 @@ h2 {
   margin-bottom: 30px;
 }
 
-/* landing section */
+/* landing */
 
 header {
   background-image: url("../images/landing-background.jpg");
@@ -54,6 +54,13 @@ header {
 
 #navbar .nav-link {
   transition: all 0.4s ease-in-out;
+}
+
+/* WHO IS COMING SECTION */
+
+#who-is-coming {
+  /* background: #fff; */
+  height: 100vh;
 }
 
 /* FOOTER */
