@@ -1,2 +1,2 @@
-# meet-half-way-through
+# meet-halfway
 Help find location for catch up
