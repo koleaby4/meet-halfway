@@ -46,6 +46,16 @@ header {
   height: 100vh;
 }
 
+/* NAVBAR */
+
+#navbar .nav-link:hover {
+  color: #fff;
+}
+
+#navbar .nav-link {
+  transition: all 0.4s ease-in-out;
+}
+
 /* FOOTER */
 
 footer {
