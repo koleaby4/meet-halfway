@@ -63,6 +63,15 @@ header {
   height: 100vh;
 }
 
+#myTable {
+  width: 100%;
+}
+
+.delete-participant {
+  font-size: 3rem;
+  border-radius: 0.25rem;
+}
+
 /* FOOTER */
 
 footer {

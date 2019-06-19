@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="assets/css/normalize.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="assets/js/script.js"></script>
     <title>Meet halfway</title>
   </head>
   <body>
@@ -45,7 +47,55 @@
 
     <!-- Who is coming -->
     <section id="who-is-coming" class="who-is-coming-section">
-      <h1>Let's add people</h1>
+      <h1>Who is coming?</h1>
+      <div class="container table-container">
+        <table id="myTable" class=" table order-list">
+          <tbody>
+            <tr class="row">
+              <td class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  placeholder="Name"
+                />
+              </td>
+              <td class="col">
+                <input
+                  type="text"
+                  name="country"
+                  class="form-control"
+                  placeholder="Country"
+                />
+              </td>
+              <td class="col">
+                <input
+                  type="text"
+                  name="postcode"
+                  class="form-control"
+                  placeholder="Post Code"
+                />
+              </td>
+              <td class="col">
+                <ion-icon name="trash" class="delete-participant badge-danger"/>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input
+                  type="button"
+                  class="btn btn-lg btn-block "
+                  id="addrow"
+                  value="Add Row"
+                />
+              </td>
+            </tr>
+            <tr></tr>
+          </tfoot>
+        </table>
+      </div>
     </section>
 
     <!-- FOOTER -->
@@ -56,7 +106,7 @@
         >Nicolai Negru</a
       >
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
