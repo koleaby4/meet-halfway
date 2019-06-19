@@ -59,12 +59,7 @@ header {
 /* WHO IS COMING SECTION */
 
 #who-is-coming {
-  /* background: #fff; */
   height: 100vh;
-}
-
-#myTable {
-  width: 100%;
 }
 
 .delete-participant {

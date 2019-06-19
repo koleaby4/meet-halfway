@@ -6,19 +6,18 @@ function whoIsComingTable() {
     var cols = "";
 
     cols +=
-      '<td><input type="text" class="form-control col-sm" name="name"/></td>';
+      '<td class="col-lg-12 col-xl-5"><input type = "text" class="form-control" name = "name" placeholder = "Name" /></td >';
     cols +=
-      '<td><input type="text" class="form-control col-sm" name="mail"/></td>';
+      '<td class="col-lg"><input type="text" class="form-control" name="country" placeholder="Country"/></td>';
     cols +=
-      '<td><input type="text" class="form-control col-sm" name="phone"/></td>';
-
+      '<td class="col-lg"><input type="text" class="form-control" name="postcode" placeholder="Post Code"/></td>';
     cols +=
-      '<td class="col-sm"><ion-icon name="trash" class="delete-participant badge-danger"/></td>';
+      '<td class="col-1"><ion-icon name="trash" class="delete-participant badge-danger"/></td>';
     newRow.append(cols);
-    $("table.order-list").append(newRow);
+    $("table.who-is-coming").append(newRow);
   });
 
-  $("table.order-list").on("click", ".delete-participant", function(event) {
+  $("table.who-is-coming").on("click", ".delete-participant", function(event) {
     $(this)
       .closest("tr")
       .remove();
