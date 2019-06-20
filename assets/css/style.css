@@ -62,6 +62,10 @@ header {
   height: 100vh;
 }
 
+#who-is-coming-table input {
+  text-align: center;
+}
+
 .delete-participant {
   font-size: 3rem;
   border-radius: 0.25rem;
