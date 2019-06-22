@@ -34,22 +34,50 @@ function deleteParticipantRow(event) {
     .remove();
 }
 
+const saveParticipantToLocalStorage = participant => {
+  const participants = localStorage.participants
+    ? JSON.parse(localStorage.participants)
+    : {};
+  participants[participant.id] = participant;
+  localStorage.setItem("participants", JSON.stringify(participants));
+};
+
 const confirmParticipant = button => {
   const row = button.parentNode;
   const participant = participantFactory(row);
 
-  const location = fetchLocation(participant.country, participant.postCode);
-
-  if (location) {
-    lockRow(row);
-  } else {
-    notifyFetchLocationFailed(row, participant);
-  }
+  addParticipant(participant);
+  lockRow(row);
 };
 
-const fetchLocation = row => {
-  console.log(`fetching location for ${row}... `);
-  return 1;
+const addMarker = (participant, location) => {
+  map.setCenter(location);
+  new google.maps.Marker({
+    map: map,
+    position: location,
+    label: participant.name
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+  });
+};
+
+const addParticipant = async participant => {
+  const geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode(
+    { address: `${participant.country}, ${participant.postCode}` },
+    (results, status) => {
+      if (status === "OK") {
+        const location = results[0].geometry.location;
+        addMarker(participant, location);
+        participant.location = location;
+        saveParticipantToLocalStorage(participant);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    }
+  );
 };
 
 const notifyFetchLocationFailed = (row, participant) => {
@@ -69,6 +97,7 @@ class Participant {
     this.name = name;
     this.country = country;
     this.postCode = postCode;
+    this.id = `${name}${country}${postCode}`;
   }
 }
 
@@ -79,9 +108,11 @@ const participantFactory = row => {
   return new Participant(name, country, postCode);
 };
 
+let map;
+
 function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 51.53037, lng: -0.173648 },
     zoom: 8
   });
 }
