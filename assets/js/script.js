@@ -55,10 +55,7 @@ const addMarker = (participant, location) => {
   new google.maps.Marker({
     map: map,
     position: location,
-    label: participant.name
-      .split(" ")
-      .map(word => word[0])
-      .join("")
+    label: getInitials(participant.name)
   });
 };
 
@@ -80,14 +77,23 @@ const addParticipant = async participant => {
   );
 };
 
+const getInitials = name =>
+  name
+    .split(/\s+/)
+    .map(word => word.trim()[0])
+    .join("");
+
 const notifyFetchLocationFailed = (row, participant) => {
   alert(`failed to fetch location for \n${JSON.stringify(participant)}`);
 };
 
 const lockRow = row => {
-  Array.from(row.getElementsByTagName("input")).forEach(element =>
-    element.setAttribute("disabled", "disabled")
-  );
+  Array.from(row.getElementsByTagName("input")).forEach(element => {
+    if (element.name == "name") {
+      element.value = `(${getInitials(element.value)}) ${element.value}`;
+    }
+    element.setAttribute("disabled", "disabled");
+  });
 
   row.removeChild(row.querySelector("[class*=confirm-participant-button]"));
 };
