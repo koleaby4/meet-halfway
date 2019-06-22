@@ -88,6 +88,12 @@ header {
   border: 0;
 }
 
+/* MAP VIEW */
+
+#who-is-coming {
+  height: 100vh;
+}
+
 /* FOOTER */
 
 footer {
