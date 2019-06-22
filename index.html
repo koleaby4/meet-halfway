@@ -1,80 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <title>Meet halfway</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="assets/css/normalize.css" />
-  <link rel="stylesheet" href="assets/css/bootstrap.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="assets/js/script.js"></script>
-  <title>Meet halfway</title>
-</head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<body>
-  <!-- NAVBAR -->
-  <header>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#who-is-coming-section"
+                >Who is coming?</a
+              >
+            </li>
 
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#who-is-coming-section">Who is coming?</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Map view</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Help?</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Who is coming -->
-  <section id="who-is-coming-section">
-    <h1>Who is coming?</h1>
-    <div class="container table-container">
-      <div id="who-is-coming-table" class="who-is-coming">
-        <div class="participant-row row align-items-center justify-content-center">
-          <input type="text" class="form-control col-lg col-xl-5" name="name" placeholder="Name" />
-          <input type="text" class="form-control col-lg" name="country" placeholder="Country" />
-          <input type="text" class="form-control col-lg" name="postcode" placeholder="Post Code" />
-          <button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
-            <ion-icon name="checkmark" class="confirm-participant-icon"></ion-icon></button>
-          <button type="button" class="btn btn-danger delete-participant-button">
-            <ion-icon name="trash" class="delete-participant-icon" /></button>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Map view</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help?</a>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div>
+      </nav>
+    </header>
+
+    <!-- Who is coming -->
+    <section id="who-is-coming-section">
+      <h1>Who is coming?</h1>
+      <div class="container table-container">
+        <div id="who-is-coming-table" class="who-is-coming">
+          <div
+            class="participant-row row align-items-center justify-content-center"
+          ></div>
+        </div>
         <div>
           <div>
-            <input type="button" class="btn btn-lg btn-block btn-success" id="addrow" value="Add Row" />
+            <div>
+              <input
+                type="button"
+                class="btn btn-lg btn-block btn-success"
+                id="addrow"
+                value="Add Row"
+                onclick="addParticipantRow()"
+              />
+            </div>
           </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <!-- FOOTER -->
 
-  <footer class="container-fluid">
-    © 2019 - Site developed by
-    <a href="https://www.linkedin.com/in/nicolai-negru-a591355">Nicolai Negru</a>
-  </footer>
-  <script src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-
+    <footer class="container-fluid">
+      © 2019 - Site developed by
+      <a href="https://www.linkedin.com/in/nicolai-negru-a591355"
+        >Nicolai Negru</a
+      >
+    </footer>
+    <script src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
 </html>
