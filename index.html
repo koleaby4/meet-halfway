@@ -62,7 +62,7 @@
             <div>
               <input
                 type="button"
-                class="btn btn-lg btn-block btn-success"
+                class="btn btn-lg btn-block btn-success add-participant-button"
                 id="addrow"
                 value="Add Row"
                 onclick="addParticipantRow()"
@@ -75,8 +75,10 @@
     </section>
 
     <!-- MAP VIEW -->
-    <section class="map-view">
-      
+    <section class="map-view-section">
+      <div id="map"></div>
+      <script id="googleApiSrc" async defer></script>
+      <script src="config.js"></script>
     </section>
 
     <!-- FOOTER -->

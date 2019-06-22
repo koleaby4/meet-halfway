@@ -37,7 +37,9 @@ function deleteParticipantRow(event) {
 const confirmParticipant = button => {
   const row = button.parentNode;
   const participant = participantFactory(row);
-  const location = fetchLocation(row, participant);
+
+  const location = fetchLocation(participant.country, participant.postCode);
+
   if (location) {
     lockRow(row);
   } else {
@@ -76,3 +78,10 @@ const participantFactory = row => {
   ).map(input => input.value);
   return new Participant(name, country, postCode);
 };
+
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8
+  });
+}
