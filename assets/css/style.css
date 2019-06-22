@@ -66,9 +66,25 @@ header {
   text-align: center;
 }
 
-.delete-participant {
+.participant-row {
+  margin-bottom: 0.5rem;
+}
+
+.participant-row input {
+  margin: 0.5rem;
+  padding: 0;
+}
+
+.participant-row button {
+  margin: 0.5rem;
+  padding: 0;
+  height: 3rem;
+}
+
+.participant-row ion-icon {
   font-size: 3rem;
   border-radius: 0.25rem;
+  border: 0;
 }
 
 /* FOOTER */

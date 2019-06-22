@@ -44,32 +44,25 @@
   <section id="who-is-coming-section">
     <h1>Who is coming?</h1>
     <div class="container table-container">
-      <table id="who-is-coming-table" class=" table who-is-coming">
-        <tbody>
-          <tr class="row justify-content-center">
-            <td class="col-lg col-xl-5">
-              <input type="text" class="form-control" name="name" placeholder="Name" />
-            </td>
-            <td class="col-lg">
-              <input type="text" class="form-control" name="country" placeholder="Country" />
-            </td>
-            <td class="col-lg">
-              <input type="text" class="form-control" name="postcode" placeholder="Post Code" />
-            </td>
-            <td class="col-1 delete-participant-column block">
-              <ion-icon name="trash" class="delete-participant badge-danger" />
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td>
-              <input type="button" class="btn btn-lg btn-block btn-success" id="addrow" value="Add Row" />
-            </td>
-          </tr>
-          <tr></tr>
-        </tfoot>
-      </table>
+      <div id="who-is-coming-table" class="who-is-coming">
+        <div class="participant-row row align-items-center justify-content-center">
+          <input type="text" class="form-control col-lg col-xl-5" name="name" placeholder="Name" />
+          <input type="text" class="form-control col-lg" name="country" placeholder="Country" />
+          <input type="text" class="form-control col-lg" name="postcode" placeholder="Post Code" />
+          <button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
+            <ion-icon name="checkmark" class="confirm-participant-icon"></ion-icon></button>
+          <button type="button" class="btn btn-danger delete-participant-button">
+            <ion-icon name="trash" class="delete-participant-icon" /></button>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            <input type="button" class="btn btn-lg btn-block btn-success" id="addrow" value="Add Row" />
+          </div>
+        </div>
+        <div></div>
+      </div>
     </div>
   </section>
 
