@@ -64,8 +64,10 @@ const deleteParticipantRow = event => {
 };
 
 const deleteMarkerFor = participantId => {
-  markers[participantId].setMap(null);
-  delete markers[participantId];
+  if (markers[participantId]) {
+    markers[participantId].setMap(null);
+    delete markers[participantId];
+  }
 };
 
 const getParticipantsFromLocalStorage = () =>
@@ -90,11 +92,7 @@ const confirmParticipant = button => {
   const row = button.parentNode;
   const participant = participantFactory(row);
 
-  try {
-    addParticipant(participant);
-  } catch (e){
-    
-  }
+  addParticipant(participant);
   lockRow(row);
   row.setAttribute("id", participant.id);
 };
@@ -124,7 +122,7 @@ const addParticipant = async participant => {
         addMarker(participant);
         appendParticipantToLocalStorage(participant);
       } else {
-        throw ("Geocode was not successful for the following reason: " + status);
+        alert("Geocode was not successful for the following reason: " + status);
       }
     }
   );
