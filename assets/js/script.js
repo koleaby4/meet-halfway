@@ -11,6 +11,36 @@ function setUp() {
   }
 }
 
+const centralLocation = participants => {
+  if (Object.keys(participants).length <= 1) {
+    return {};
+  }
+  const lats = [];
+  const lngs = [];
+  Object.values(participants).forEach(participant => {
+    lats.push(participant.location.lat);
+    lngs.push(participant.location.lng);
+  });
+  const lat = lats.reduce((a, b) => a + b, 0) / lats.length;
+  const lng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
+  return new google.maps.LatLng(lat, lng);
+};
+
+async function setCentralPin(participants) {
+  const center = centralLocation(participants);
+
+  if (markers[0]) {
+    deleteMarkerFor(0);
+  }
+
+  const marker = addMarker(center, "", {
+    icon: { url: "http://maps.google.com/mapfiles/ms/icons/green.png" },
+    animation: google.maps.Animation.BOUNCE
+  });
+
+  markers[0] = await marker;
+}
+
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
     addRowToWhoIsComingTable();
@@ -61,6 +91,8 @@ const deleteParticipantRow = event => {
   deleteParticipantFromLocalStorage(participantId);
   div.remove();
   deleteMarkerFor(participantId);
+
+  setCentralPin(getParticipantsFromLocalStorage());
 };
 
 const deleteMarkerFor = participantId => {
@@ -95,19 +127,26 @@ const confirmParticipant = button => {
   addParticipant(participant);
   lockRow(row);
   row.setAttribute("id", participant.id);
+
+  setCentralPin(getParticipantsFromLocalStorage());
 };
 
-const addMarker = participant => {
-  const location = participant.location;
+const addMarkerForParticipant = async participant => {
+  const marker = addMarker(participant.location, getInitials(participant.name));
+  markers[participant.id] = await marker;
+};
 
+const addMarker = (location, label, otherProps) => {
   map.setCenter(location);
-  const marker = new google.maps.Marker({
+  const payload = {
     map: map,
     position: location,
-    label: getInitials(participant.name)
-  });
+    animation: google.maps.Animation.DROP,
+    label: label,
+    ...otherProps
+  };
 
-  markers[participant.id] = marker;
+  return new google.maps.Marker(payload);
 };
 
 const addParticipant = async participant => {
@@ -119,7 +158,7 @@ const addParticipant = async participant => {
       if (status === "OK") {
         const location = results[0].geometry.location;
         participant.location = location;
-        addMarker(participant);
+        addMarkerForParticipant(participant);
         appendParticipantToLocalStorage(participant);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
