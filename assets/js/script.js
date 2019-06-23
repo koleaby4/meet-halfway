@@ -5,13 +5,33 @@ $(document).ready(setUp);
 
 function setUp() {
   if (Object.keys(getParticipantsFromLocalStorage()).length) {
-    alert("load existing participants");
+    loadParticipantsFromLocalStorage();
   } else {
-    addFirstRowToWhoIsComingTable();
+    addRowToWhoIsComingTable();
   }
 }
 
-function addFirstRowToWhoIsComingTable() {
+function loadParticipantsFromLocalStorage() {
+  Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
+    addRowToWhoIsComingTable();
+    const row = $(".participant-row").last();
+    row
+      .find("[name=name]")
+      .first()
+      .val(participant.name);
+    row
+      .find("[name=country]")
+      .first()
+      .val(participant.country);
+    row
+      .find("[name=postcode]")
+      .first()
+      .val(participant.postCode);
+    deleteParticipantFromLocalStorage(participant.id);
+  });
+}
+
+function addRowToWhoIsComingTable() {
   document.querySelector("#addrow").click();
 }
 
@@ -35,18 +55,18 @@ function addParticipantRow() {
   document.querySelector("#addrow").scrollIntoView(false);
 }
 
-function deleteParticipantRow(event) {
+const deleteParticipantRow = event => {
   const div = $(event).closest("div")[0];
   const participantId = div.id;
   deleteParticipantFromLocalStorage(participantId);
   div.remove();
   deleteMarkerFor(participantId);
-}
+};
 
-function deleteMarkerFor(participantId) {
+const deleteMarkerFor = participantId => {
   markers[participantId].setMap(null);
   delete markers[participantId];
-}
+};
 
 const getParticipantsFromLocalStorage = () =>
   localStorage.participants ? JSON.parse(localStorage.participants) : {};
@@ -70,12 +90,16 @@ const confirmParticipant = button => {
   const row = button.parentNode;
   const participant = participantFactory(row);
 
-  addParticipant(participant);
+  try {
+    addParticipant(participant);
+  } catch (e){
+    
+  }
   lockRow(row);
   row.setAttribute("id", participant.id);
 };
 
-const addMarker = async participant => {
+const addMarker = participant => {
   const location = participant.location;
 
   map.setCenter(location);
@@ -100,7 +124,7 @@ const addParticipant = async participant => {
         addMarker(participant);
         appendParticipantToLocalStorage(participant);
       } else {
-        alert("Geocode was not successful for the following reason: " + status);
+        throw ("Geocode was not successful for the following reason: " + status);
       }
     }
   );
