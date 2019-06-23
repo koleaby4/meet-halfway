@@ -1,7 +1,14 @@
+let map;
+const markers = {};
+
 $(document).ready(setUp);
 
 function setUp() {
-  addFirstRowToWhoIsComingTable();
+  if (Object.keys(getParticipantsFromLocalStorage()).length) {
+    alert("load existing participants");
+  } else {
+    addFirstRowToWhoIsComingTable();
+  }
 }
 
 function addFirstRowToWhoIsComingTable() {
@@ -30,14 +37,19 @@ function addParticipantRow() {
 
 function deleteParticipantRow(event) {
   const div = $(event).closest("div")[0];
-  deleteParticipantFromLocalStorage(div.id);
+  const participantId = div.id;
+  deleteParticipantFromLocalStorage(participantId);
   div.remove();
+  deleteMarkerFor(participantId);
 }
 
-const getParticipantsFromLocalStorage = () => {
-  const existing = JSON.parse(localStorage.participants);
-  return existing ? existing : {};
-};
+function deleteMarkerFor(participantId) {
+  markers[participantId].setMap(null);
+  delete markers[participantId];
+}
+
+const getParticipantsFromLocalStorage = () =>
+  localStorage.participants ? JSON.parse(localStorage.participants) : {};
 
 const saveParticipantsToLocalStorage = participants =>
   localStorage.setItem("participants", JSON.stringify(participants));
@@ -63,13 +75,17 @@ const confirmParticipant = button => {
   row.setAttribute("id", participant.id);
 };
 
-const addMarker = (participant, location) => {
+const addMarker = async participant => {
+  const location = participant.location;
+
   map.setCenter(location);
-  new google.maps.Marker({
+  const marker = new google.maps.Marker({
     map: map,
     position: location,
     label: getInitials(participant.name)
   });
+
+  markers[participant.id] = marker;
 };
 
 const addParticipant = async participant => {
@@ -80,8 +96,8 @@ const addParticipant = async participant => {
     (results, status) => {
       if (status === "OK") {
         const location = results[0].geometry.location;
-        addMarker(participant, location);
         participant.location = location;
+        addMarker(participant);
         appendParticipantToLocalStorage(participant);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
@@ -126,8 +142,6 @@ const participantFactory = row => {
   ).map(input => input.value);
   return new Participant(name, country, postCode);
 };
-
-let map;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
