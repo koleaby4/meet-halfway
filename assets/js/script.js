@@ -32,7 +32,16 @@ function deleteParticipantRow(event) {
   $(event)
     .closest("div")
     .remove();
+
+  const participantId = $(event).closest("div")[0].id;
+  deleteParticipantFromLocalStorage(participantId);
 }
+
+const deleteParticipantFromLocalStorage = id => {
+  const participants = JSON.parse(localStorage["participants"]);
+  delete participants[id];
+  localStorage.setItem("participants", JSON.stringify(participants));
+};
 
 const saveParticipantToLocalStorage = participant => {
   const participants = localStorage.participants
@@ -48,6 +57,7 @@ const confirmParticipant = button => {
 
   addParticipant(participant);
   lockRow(row);
+  row.setAttribute("id", participant.id);
 };
 
 const addMarker = (participant, location) => {
