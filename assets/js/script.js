@@ -29,26 +29,29 @@ function addParticipantRow() {
 }
 
 function deleteParticipantRow(event) {
-  $(event)
-    .closest("div")
-    .remove();
-
-  const participantId = $(event).closest("div")[0].id;
-  deleteParticipantFromLocalStorage(participantId);
+  const div = $(event).closest("div")[0];
+  deleteParticipantFromLocalStorage(div.id);
+  div.remove();
 }
 
-const deleteParticipantFromLocalStorage = id => {
-  const participants = JSON.parse(localStorage["participants"]);
-  delete participants[id];
-  localStorage.setItem("participants", JSON.stringify(participants));
+const getParticipantsFromLocalStorage = () => {
+  const existing = JSON.parse(localStorage.participants);
+  return existing ? existing : {};
 };
 
-const saveParticipantToLocalStorage = participant => {
-  const participants = localStorage.participants
-    ? JSON.parse(localStorage.participants)
-    : {};
-  participants[participant.id] = participant;
+const saveParticipantsToLocalStorage = participants =>
   localStorage.setItem("participants", JSON.stringify(participants));
+
+const deleteParticipantFromLocalStorage = id => {
+  const participants = getParticipantsFromLocalStorage();
+  delete participants[id];
+  saveParticipantsToLocalStorage(participants);
+};
+
+const appendParticipantToLocalStorage = participant => {
+  const participants = getParticipantsFromLocalStorage();
+  participants[participant.id] = participant;
+  saveParticipantsToLocalStorage(participants);
 };
 
 const confirmParticipant = button => {
@@ -79,7 +82,7 @@ const addParticipant = async participant => {
         const location = results[0].geometry.location;
         addMarker(participant, location);
         participant.location = location;
-        saveParticipantToLocalStorage(participant);
+        appendParticipantToLocalStorage(participant);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
@@ -113,7 +116,7 @@ class Participant {
     this.name = name;
     this.country = country;
     this.postCode = postCode;
-    this.id = `${name}${country}${postCode}`;
+    this.id = new Date().getTime();
   }
 }
 
