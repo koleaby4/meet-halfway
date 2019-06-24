@@ -4,12 +4,15 @@ const markers = {};
 $(document).ready(setUp);
 
 function setUp() {
-  if (Object.keys(getParticipantsFromLocalStorage()).length) {
+  if (numberOfParticipants() > 0) {
     loadParticipantsFromLocalStorage();
   } else {
     addRowToWhoIsComingTable();
   }
 }
+
+const numberOfParticipants = () =>
+  Object.keys(getParticipantsFromLocalStorage()).length;
 
 const centralLocation = participants => {
   if (Object.keys(participants).length <= 1) {
@@ -21,24 +24,27 @@ const centralLocation = participants => {
     lats.push(participant.location.lat);
     lngs.push(participant.location.lng);
   });
-  const lat = lats.reduce((a, b) => a + b, 0) / lats.length;
-  const lng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
-  return new google.maps.LatLng(lat, lng);
+  return new google.maps.LatLng(average(lats), average(lngs));
 };
+
+const average = collection =>
+  collection.reduce((a, b) => a + b, 0) / collection.length;
 
 async function setCentralPin(participants) {
   const center = centralLocation(participants);
 
   if (markers[0]) {
-    deleteMarkerFor(0);
+    deleteMarker(0);
   }
 
-  const marker = addMarker(center, "", {
-    icon: { url: "http://maps.google.com/mapfiles/ms/icons/green.png" },
-    animation: google.maps.Animation.BOUNCE
-  });
+  if (numberOfParticipants() > 1) {
+    const marker = addMarker(center, "", {
+      icon: { url: "http://maps.google.com/mapfiles/ms/icons/green.png" },
+      animation: google.maps.Animation.BOUNCE
+    });
 
-  markers[0] = await marker;
+    markers[0] = await marker;
+  }
 }
 
 function loadParticipantsFromLocalStorage() {
@@ -90,12 +96,12 @@ const deleteParticipantRow = event => {
   const participantId = div.id;
   deleteParticipantFromLocalStorage(participantId);
   div.remove();
-  deleteMarkerFor(participantId);
+  deleteMarker(participantId);
 
   setCentralPin(getParticipantsFromLocalStorage());
 };
 
-const deleteMarkerFor = participantId => {
+const deleteMarker = participantId => {
   if (markers[participantId]) {
     markers[participantId].setMap(null);
     delete markers[participantId];
@@ -149,10 +155,10 @@ const addMarker = (location, label, otherProps) => {
   return new google.maps.Marker(payload);
 };
 
-const addParticipant = async participant => {
+const addParticipant = participant => {
   const geocoder = new google.maps.Geocoder();
 
-  geocoder.geocode(
+  return geocoder.geocode(
     { address: `${participant.country}, ${participant.postCode}` },
     (results, status) => {
       if (status === "OK") {
