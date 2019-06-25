@@ -56,13 +56,9 @@ function loadParticipantsFromLocalStorage() {
       .first()
       .val(participant.name);
     row
-      .find("[name=country]")
+      .find("[name=address]")
       .first()
-      .val(participant.country);
-    row
-      .find("[name=postcode]")
-      .first()
-      .val(participant.postCode);
+      .val(participant.address);
     deleteParticipantFromLocalStorage(participant.id);
   });
 }
@@ -79,9 +75,7 @@ function addParticipantRow() {
   let cols =
     '<input type="text" class="form-control col-12" name="name" placeholder="Name" />';
   cols +=
-    '<input type="text" class="form-control col-12" name="country" placeholder="Country" />';
-  cols +=
-    '<input type="text" class="form-control col-12" name="postcode" placeholder="Post Code" />';
+    '<input type="text" class="form-control col-12" name="address" placeholder="Address" />';
   cols += `<button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
         <ion-icon name="checkmark" class="confirm-participant-icon"></ion-icon></button>`;
   cols += `<button type="button" class="btn btn-danger delete-participant-button" onclick="deleteParticipantRow(this)">
@@ -159,7 +153,7 @@ const addParticipant = participant => {
   const geocoder = new google.maps.Geocoder();
 
   return geocoder.geocode(
-    { address: `${participant.country}, ${participant.postCode}` },
+    { address: participant.address },
     (results, status) => {
       if (status === "OK") {
         const location = results[0].geometry.location;
@@ -195,19 +189,18 @@ const lockRow = row => {
 };
 
 class Participant {
-  constructor(name, country, postCode) {
+  constructor(name, address) {
     this.name = name;
-    this.country = country;
-    this.postCode = postCode;
+    this.address = address;
     this.id = new Date().getTime();
   }
 }
 
 const participantFactory = row => {
-  const [name, country, postCode] = Array.from(
-    row.getElementsByTagName("input")
-  ).map(input => input.value);
-  return new Participant(name, country, postCode);
+  const [name, address] = Array.from(row.getElementsByTagName("input")).map(
+    input => input.value
+  );
+  return new Participant(name, address);
 };
 
 function initMap() {
