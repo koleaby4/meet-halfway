@@ -124,11 +124,11 @@ const confirmParticipant = button => {
   const row = button.parentNode;
   const participant = participantFactory(row);
 
-  addParticipant(participant);
-  lockRow(row);
-  row.setAttribute("id", participant.id);
-
-  setCentralPin(getParticipantsFromLocalStorage());
+  addParticipant(participant, () => {
+    lockRow(row);
+    row.setAttribute("id", participant.id);
+    setCentralPin(getParticipantsFromLocalStorage());
+  });
 };
 
 const addMarkerForParticipant = async participant => {
@@ -149,7 +149,7 @@ const addMarker = (location, label, otherProps) => {
   return new google.maps.Marker(payload);
 };
 
-const addParticipant = participant => {
+const addParticipant = (participant, callback) => {
   const geocoder = new google.maps.Geocoder();
 
   return geocoder.geocode(
@@ -160,6 +160,7 @@ const addParticipant = participant => {
         participant.location = location;
         addMarkerForParticipant(participant);
         appendParticipantToLocalStorage(participant);
+        callback();
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
