@@ -115,7 +115,7 @@ header {
 /* MAP VIEW */
 
 .map-view-section {
-  height: 100vw;
+  height: 100vh;
 }
 
 #map {

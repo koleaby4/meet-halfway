@@ -82,7 +82,7 @@ function addParticipantRow() {
             <ion-icon name="trash" class="delete-participant-icon" /></button>`;
   newRow.append(cols);
   $("#who-is-coming-table").append(newRow);
-  document.querySelector("#addrow").scrollIntoView(false);
+  // document.querySelector("#addrow").scrollIntoView(false);
 }
 
 const deleteParticipantRow = event => {
@@ -152,20 +152,17 @@ const addMarker = (location, label, otherProps) => {
 const addParticipant = (participant, callback) => {
   const geocoder = new google.maps.Geocoder();
 
-  return geocoder.geocode(
-    { address: participant.address },
-    (results, status) => {
-      if (status === "OK") {
-        const location = results[0].geometry.location;
-        participant.location = location;
-        addMarkerForParticipant(participant);
-        appendParticipantToLocalStorage(participant);
-        callback();
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+  geocoder.geocode({ address: participant.address }, (results, status) => {
+    if (status === "OK") {
+      const location = results[0].geometry.location;
+      participant.location = location;
+      addMarkerForParticipant(participant);
+      appendParticipantToLocalStorage(participant);
+      callback();
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
     }
-  );
+  });
 };
 
 const getInitials = name =>
