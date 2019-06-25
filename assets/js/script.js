@@ -92,7 +92,7 @@ const deleteParticipantRow = event => {
   deleteMarker(participantId);
 
   setCentralPin(getParticipantsFromLocalStorage());
-  zoomTo(Object.values(markers));
+  zoomToMarkers();
 };
 
 const deleteMarker = participantId => {
@@ -129,14 +129,15 @@ const confirmParticipant = button => {
     row.setAttribute("id", participant.id);
     const participants = getParticipantsFromLocalStorage();
     setCentralPin(participants);
-    zoomTo(Object.values(markers));
+    zoomToMarkers();
   });
 };
 
-const zoomTo = markers => {
+const zoomToMarkers = () => {
+  const pins = Object.values(markers);
   var bounds = new google.maps.LatLngBounds();
-  for (var i = 0; i < markers.length; i++) {
-    bounds.extend(markers[i].position);
+  for (var i = 0; i < pins.length; i++) {
+    bounds.extend(pins[i].position);
   }
   map.fitBounds(bounds);
 };
