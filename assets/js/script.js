@@ -77,11 +77,11 @@ function addParticipantRow() {
   );
 
   let cols =
-    '<input type="text" class="form-control col-lg col-xl-5" name="name" placeholder="Name" />';
+    '<input type="text" class="form-control col-12" name="name" placeholder="Name" />';
   cols +=
-    '<input type="text" class="form-control col-lg" name="country" placeholder="Country" />';
+    '<input type="text" class="form-control col-12" name="country" placeholder="Country" />';
   cols +=
-    '<input type="text" class="form-control col-lg" name="postcode" placeholder="Post Code" />';
+    '<input type="text" class="form-control col-12" name="postcode" placeholder="Post Code" />';
   cols += `<button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
         <ion-icon name="checkmark" class="confirm-participant-icon"></ion-icon></button>`;
   cols += `<button type="button" class="btn btn-danger delete-participant-button" onclick="deleteParticipantRow(this)">

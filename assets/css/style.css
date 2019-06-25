@@ -57,10 +57,30 @@ header {
   transition: all 0.4s ease-in-out;
 }
 
+/* WORKING AREA */
+
+#working-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+}
+
+@media (min-width: 768px) {
+  #working-area {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media (min-width: 1224px) {
+  #working-area {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
 /* WHO IS COMING SECTION */
 
-#who-is-coming {
-  height: 100vh;
+#who-is-coming-section {
+  padding: 20px;
 }
 
 #who-is-coming-table input {
@@ -95,11 +115,11 @@ header {
 /* MAP VIEW */
 
 .map-view-section {
-  height: 100vh;
+  height: 100vw;
 }
 
 #map {
-  height: 100vh;
+  height: 100%;
 }
 
 /* FOOTER */
