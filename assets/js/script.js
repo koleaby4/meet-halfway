@@ -130,6 +130,7 @@ const confirmParticipant = button => {
     const participants = getParticipantsFromLocalStorage();
     setCentralPin(participants);
     zoomToMarkers();
+    drawLines();
   });
 };
 
@@ -147,6 +148,28 @@ const addMarkerForParticipant = participant =>
     participant.location,
     getInitials(participant.name)
   ));
+
+const drawLines = () => {
+  if (markers[0] === undefined) {
+    return;
+  }
+
+  const centralPinPosition = markers[0].position;
+  const path = [centralPinPosition];
+
+  Object.values(markers).forEach(marker => {
+    path.push(position);
+    path.push(centralPinPosition);
+  });
+
+  new google.maps.Polyline({
+    path: path,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  }).setMap(map);
+};
 
 const addMarker = (location, label, otherProps) => {
   map.setCenter(location);
@@ -182,10 +205,6 @@ const getInitials = name =>
     .split(/\s+/)
     .map(word => word.trim()[0])
     .join("");
-
-const notifyFetchLocationFailed = (row, participant) => {
-  alert(`failed to fetch location for \n${JSON.stringify(participant)}`);
-};
 
 const lockRow = row => {
   Array.from(row.getElementsByTagName("input")).forEach(element => {
