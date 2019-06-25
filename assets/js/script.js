@@ -81,8 +81,7 @@ function addParticipantRow() {
   cols += `<button type="button" class="btn btn-danger delete-participant-button" onclick="deleteParticipantRow(this)">
             <ion-icon name="trash" class="delete-participant-icon" /></button>`;
   newRow.append(cols);
-  $("#who-is-coming-table").append(newRow);
-  // document.querySelector("#addrow").scrollIntoView(false);
+  $("#who-is-coming-table").prepend(newRow);
 }
 
 const deleteParticipantRow = event => {
