@@ -93,6 +93,7 @@ const deleteParticipantRow = event => {
   deleteMarker(participantId);
 
   setCentralPin(getParticipantsFromLocalStorage());
+  zoomTo(Object.values(markers));
 };
 
 const deleteMarker = participantId => {
