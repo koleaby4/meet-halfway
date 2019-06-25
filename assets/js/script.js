@@ -127,14 +127,25 @@ const confirmParticipant = button => {
   addParticipant(participant, () => {
     lockRow(row);
     row.setAttribute("id", participant.id);
-    setCentralPin(getParticipantsFromLocalStorage());
+    const participants = getParticipantsFromLocalStorage();
+    setCentralPin(participants);
+    zoomTo(Object.values(markers));
   });
 };
 
-const addMarkerForParticipant = async participant => {
-  const marker = addMarker(participant.location, getInitials(participant.name));
-  markers[participant.id] = await marker;
+const zoomTo = markers => {
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markers.length; i++) {
+    bounds.extend(markers[i].position);
+  }
+  map.fitBounds(bounds);
 };
+
+const addMarkerForParticipant = participant =>
+  (markers[participant.id] = addMarker(
+    participant.location,
+    getInitials(participant.name)
+  ));
 
 const addMarker = (location, label, otherProps) => {
   map.setCenter(location);
