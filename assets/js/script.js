@@ -1,5 +1,6 @@
 let map;
 const markers = {};
+let lines = [];
 
 $(document).ready(setUp);
 
@@ -30,8 +31,8 @@ const centralLocation = participants => {
 const average = collection =>
   collection.reduce((a, b) => a + b, 0) / collection.length;
 
-async function setCentralPin(participants) {
-  const center = centralLocation(participants);
+function setCentralPin() {
+  const center = centralLocation(getParticipantsFromLocalStorage());
 
   if (markers[0]) {
     deleteMarker(0);
@@ -43,7 +44,8 @@ async function setCentralPin(participants) {
       animation: google.maps.Animation.BOUNCE
     });
 
-    markers[0] = await marker;
+    markers[0] = marker;
+    console.log(`Central pin: ${markers[0].position}`);
   }
 }
 
@@ -91,8 +93,7 @@ const deleteParticipantRow = event => {
   div.remove();
   deleteMarker(participantId);
 
-  setCentralPin(getParticipantsFromLocalStorage());
-  zoomToMarkers();
+  reflectChangesOnMap();
 };
 
 const deleteMarker = participantId => {
@@ -127,11 +128,17 @@ const confirmParticipant = button => {
   addParticipant(participant, () => {
     lockRow(row);
     row.setAttribute("id", participant.id);
-    const participants = getParticipantsFromLocalStorage();
-    setCentralPin(participants);
-    zoomToMarkers();
-    drawLines();
+    reflectChangesOnMap();
   });
+};
+
+const reflectChangesOnMap = () => {
+  console.log("Setting central pin");
+  setCentralPin();
+  console.log("Zooming to markers");
+  zoomToMarkers();
+  console.log("Drawing lines");
+  drawLines();
 };
 
 const zoomToMarkers = () => {
@@ -150,25 +157,31 @@ const addMarkerForParticipant = participant =>
   ));
 
 const drawLines = () => {
+  console.log(`Markers: ${markers}`);
+
+  deleteLines();
+
   if (markers[0] === undefined) {
     return;
   }
 
-  const centralPinPosition = markers[0].position;
-  const path = [centralPinPosition];
-
   Object.values(markers).forEach(marker => {
-    path.push(position);
-    path.push(centralPinPosition);
-  });
+    let line = new google.maps.Polyline({
+      path: [marker.position, markers[0].position],
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
 
-  new google.maps.Polyline({
-    path: path,
-    geodesic: true,
-    strokeColor: "#FF0000",
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  }).setMap(map);
+    line.setMap(map);
+    lines.push(line);
+  });
+};
+
+const deleteLines = () => {
+  lines.forEach(line => line.setMap(null));
+  lines = [];
 };
 
 const addMarker = (location, label, otherProps) => {
