@@ -84,6 +84,7 @@ function addParticipantRow() {
             <ion-icon name="trash" class="delete-participant-icon" /></button>`;
   newRow.append(cols);
   $("#who-is-coming-table").prepend(newRow);
+  document.querySelector("input[name='name']").focus();
 }
 
 const deleteParticipantRow = event => {
@@ -130,6 +131,8 @@ const confirmParticipant = button => {
     row.setAttribute("id", participant.id);
     reflectChangesOnMap();
   });
+
+  document.querySelector("#addrow").click();
 };
 
 const reflectChangesOnMap = () => {
