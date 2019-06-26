@@ -81,7 +81,7 @@ header {
 
 #who-is-coming-section {
   padding: 20px;
-  max-height: 100vh;
+  height: 100vh;
   overflow: auto;
 }
 

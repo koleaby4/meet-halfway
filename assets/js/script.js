@@ -8,7 +8,7 @@ function setUp() {
   if (numberOfParticipants() > 0) {
     loadParticipantsFromLocalStorage();
   } else {
-    addRowToWhoIsComingTable();
+    addParticipantRow(false);
   }
 }
 
@@ -51,7 +51,7 @@ function setCentralPin() {
 
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
-    addRowToWhoIsComingTable();
+    addParticipantRow();
     const row = $(".participant-row").last();
     row
       .find("[name=name]")
@@ -65,11 +65,7 @@ function loadParticipantsFromLocalStorage() {
   });
 }
 
-function addRowToWhoIsComingTable() {
-  document.querySelector("#addrow").click();
-}
-
-function addParticipantRow() {
+function addParticipantRow(withFocusOnButton = true) {
   var newRow = $(
     '<div class="participant-row row align-items-center justify-content-center">'
   );
@@ -84,7 +80,9 @@ function addParticipantRow() {
             <ion-icon name="trash" class="delete-participant-icon" /></button>`;
   newRow.append(cols);
   $("#who-is-coming-table").prepend(newRow);
-  document.querySelector("input[name='name']").focus();
+  if (withFocusOnButton) {
+    document.querySelector("input[name='name']").focus();
+  }
 }
 
 const deleteParticipantRow = event => {
