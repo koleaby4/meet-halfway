@@ -85,6 +85,10 @@ header {
   overflow: auto;
 }
 
+#addrow:first-letter {
+  text-decoration: underline;
+}
+
 #who-is-coming-table input {
   text-align: center;
 }
