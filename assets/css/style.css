@@ -53,6 +53,16 @@ header {
   color: #fff;
 }
 
+#navbar a.navbar-brand {
+  padding-left: 0.1rem;
+  padding-top: 0.5rem;
+  margin-left: -12px;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
 #navbar .nav-link {
   transition: all 0.4s ease-in-out;
 }
