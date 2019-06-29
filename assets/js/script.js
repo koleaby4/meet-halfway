@@ -38,10 +38,23 @@ function setCentralPin() {
     deleteMarker(0);
   }
 
+  var image = {
+    url: "assets/images/people.png",
+    size: new google.maps.Size(71, 71),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(17, 34),
+    scaledSize: new google.maps.Size(40, 40)
+  };
+
   if (numberOfParticipants() > 1) {
     const marker = addMarker(center, "", {
-      icon: { url: "http://maps.google.com/mapfiles/ms/icons/green.png" },
+      icon: image,
       animation: google.maps.Animation.BOUNCE
+    });
+
+    marker.addListener('click', () => {
+      map.setZoom(18);
+      map.setCenter(marker.getPosition());
     });
 
     markers[0] = marker;
