@@ -52,7 +52,7 @@ function setCentralPin() {
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
     addParticipantRow();
-    const row = $(".participant-row").last();
+    const row = $(".participant-row").first();
     row
       .find("[name=name]")
       .first()
@@ -130,7 +130,9 @@ const confirmParticipant = button => {
     reflectChangesOnMap();
   });
 
-  document.querySelector("#addrow").click();
+  if (document.querySelectorAll('.confirm-participant-button').length < 2) {
+    addParticipantRow(true)
+  }
 };
 
 const reflectChangesOnMap = () => {
