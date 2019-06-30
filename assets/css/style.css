@@ -89,7 +89,7 @@ header {
 
 @media (min-width: 1224px) {
   #working-area {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
   }
 }
 
@@ -98,6 +98,17 @@ header {
 #who-is-coming-section {
   padding: 20px;
   min-height: 100vh;
+}
+
+#who-is-coming-section .add-participant {
+  width: 100%;
+}
+
+/* let 'Add Row' button be of the same width as inputs */
+@media (min-width: 300px) {
+  #who-is-coming-section .container {
+    max-width: 100%;
+  }
 }
 
 /* enable scrippbar on who-is-coming section for large devices */
