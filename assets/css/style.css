@@ -44,7 +44,13 @@ header {
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
-  height: 100vh;
+}
+
+/* only display landing page for larger devices */
+@media (min-width: 768px) {
+  header {
+    height: 100vh;
+  }
 }
 
 /* NAVBAR */
@@ -72,7 +78,7 @@ header {
 #working-area {
   display: grid;
   grid-template-columns: 1fr;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @media (min-width: 768px) {
@@ -91,8 +97,15 @@ header {
 
 #who-is-coming-section {
   padding: 20px;
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
+}
+
+/* enable scrippbar on who-is-coming section for large devices */
+@media (min-width: 768px) {
+  #who-is-coming-section {
+    height: 100vh;
+    overflow: auto;
+  }
 }
 
 #addrow:first-letter {
