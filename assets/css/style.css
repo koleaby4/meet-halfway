@@ -154,6 +154,21 @@ header {
 /* FOOTER */
 
 footer {
-  background: #fff;
   font-size: 0.7rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  footer {
+    text-align: left;
+  }
+}
+
+footer a,
+footer a:visited {
+  color: #fff;
+}
+footer a:hover,
+footer a:active {
+  color: #5bc0de;
 }
