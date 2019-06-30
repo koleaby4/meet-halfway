@@ -39,7 +39,7 @@ function setCentralPin() {
   }
 
   var image = {
-    url: "assets/images/people.png",
+    url: "assets/images/central-pin.svg",
     size: new google.maps.Size(71, 71),
     origin: new google.maps.Point(0, 0),
     anchor: new google.maps.Point(17, 34),
@@ -185,7 +185,7 @@ const drawLines = () => {
     let line = new google.maps.Polyline({
       path: [marker.position, markers[0].position],
       geodesic: true,
-      strokeColor: "#FF0000",
+      strokeColor: "#53be53",
       strokeOpacity: 1.0,
       strokeWeight: 2
     });
@@ -224,10 +224,16 @@ const addParticipant = (participant, callback) => {
       appendParticipantToLocalStorage(participant);
       callback();
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+      Swal.fire({
+        title: 'Geocode was not successful',
+        text: 'Reason: ' + status,
+        type: 'error',
+        confirmButtonText: 'Cool'
+      })
     }
   });
 };
+
 
 const getInitials = name =>
   name
