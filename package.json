@@ -1,0 +1,22 @@
+{
+  "name": "meet-halfway",
+  "version": "1.0.0",
+  "description": "Help find location for catch up",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koleaby4/meet-half-way-through.git"
+  },
+  "author": "Nicolai Negru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koleaby4/meet-half-way-through/issues"
+  },
+  "homepage": "https://github.com/koleaby4/meet-half-way-through#readme",
+  "dependencies": {
+    "bootbox": "^5.1.3"
+  }
+}
