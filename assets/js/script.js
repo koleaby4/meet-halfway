@@ -224,16 +224,23 @@ const addParticipant = (participant, callback) => {
       appendParticipantToLocalStorage(participant);
       callback();
     } else {
-      Swal.fire({
-        title: 'Geocode was not successful',
-        text: 'Reason: ' + status,
-        type: 'error',
-        confirmButtonText: 'Cool'
-      })
+      showAlert('Geocode was not successful', `Reason: ${errorMap[status] || status}`)
     }
   });
 };
 
+const errorMap = {
+  'INVALID_REQUEST': 'Address not provided',
+  'ZERO_RESULTS': 'Address not found'
+}
+
+const showAlert = (title, text) =>
+  Swal.fire({
+    title,
+    text,
+    type: 'warning',
+    confirmButtonText: 'Cool'
+  })
 
 const getInitials = name =>
   name
