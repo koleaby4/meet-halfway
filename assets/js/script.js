@@ -108,8 +108,10 @@ function addParticipantRow(withFocusOnButton = true) {
         <ion-icon name="checkmark" class="confirm-participant-icon"></ion-icon></button>`;
   cols += `<button type="button" class="btn btn-danger delete-participant-button" onclick="deleteParticipantRow(this)">
             <ion-icon name="trash" class="delete-participant-icon" /></button>`;
+
   newRow.append(cols);
   $("#who-is-coming-table").prepend(newRow);
+
   if (withFocusOnButton) {
     document.querySelector("input[name='name']").focus();
   }
