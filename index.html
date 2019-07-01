@@ -20,10 +20,12 @@
 </head>
 
 <body>
+
   <!-- NAVBAR -->
+
   <header>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"><img src="assets/images/Logo-transparent.png" /></a>
+      <a class="navbar-brand" href="#"><img src="assets/images/Logo-transparent.png" alt="logo" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
         aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,9 +49,11 @@
   </header>
 
   <section id="working-area">
+
     <!-- Who is coming -->
+
     <section id="who-is-coming-section">
-      <h1>Who is coming?</h1>
+      <h2>Who is coming?</h2>
       <div class="add-participant">
         <button type="button" class="btn btn-lg btn-block btn-success add-participant-button" id="addrow" accesskey="a"
           onclick="addParticipantRow()">
@@ -60,14 +64,15 @@
     </section>
 
     <!-- MAP VIEW -->
+
     <section id="map-view-section" class="map-view-section">
       <a href="#who-is-coming-section" class="float">
-        <img src="assets/images/plus-icon.svg">
+        <img src="assets/images/plus-icon.svg" alt="button to add participants">
       </a>
 
       <div id="map">
       </div>
-      <script id="googleApiSrc" async defer></script>
+      <script id="googleApiSrc"></script>
       <script src="config.js"></script>
     </section>
   </section>
@@ -78,6 +83,9 @@
     © 2019 - Developed by
     <a href="https://www.linkedin.com/in/nicolai-negru-a591355">Nicolai Negru</a>
   </footer>
+
+  <!-- 3rd party scripts -->
+
   <script src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
