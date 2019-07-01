@@ -47,19 +47,36 @@ function setCentralPin() {
   };
 
   if (numberOfParticipants() > 1) {
-    const marker = addMarker(center, "", {
+    const marker = addMarker(center, "Meeting Point", "", {
       icon: image,
+      title: "Central Location!",
       animation: google.maps.Animation.BOUNCE
     });
+
+    var geocoder = new google.maps.Geocoder;
+    var infowindow = new google.maps.InfoWindow;
 
     marker.addListener('click', () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
+      geocoder.geocode({ 'location': center }, function (results, status) {
+        if (status === 'OK') {
+          infowindow.setContent(getPrintableAddress(results[0], center))
+          infowindow.open(map, marker);
+        } else {
+          showAlert('Geocode was not successful', `Reason: ${errorMap[status] || status}`)
+        }
+      });
     });
 
     markers[0] = marker;
-    console.log(`Central pin: ${markers[0].position}`);
   }
+}
+
+const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
+  const address = geocodeResponse ? geocodeResponse.formatted_address : JSON.stringify(fallbackLocaton)
+  return address.replace(/\s*,\s*/g, '<br>')
+
 }
 
 function loadParticipantsFromLocalStorage() {
@@ -149,11 +166,8 @@ const confirmParticipant = button => {
 };
 
 const reflectChangesOnMap = () => {
-  console.log("Setting central pin");
   setCentralPin();
-  console.log("Zooming to markers");
   zoomToMarkers();
-  console.log("Drawing lines");
   drawLines();
 };
 
@@ -169,12 +183,11 @@ const zoomToMarkers = () => {
 const addMarkerForParticipant = participant =>
   (markers[participant.id] = addMarker(
     participant.location,
+    participant.name,
     getInitials(participant.name)
   ));
 
 const drawLines = () => {
-  console.log(`Markers: ${markers}`);
-
   deleteLines();
 
   if (markers[0] === undefined) {
@@ -200,13 +213,14 @@ const deleteLines = () => {
   lines = [];
 };
 
-const addMarker = (location, label, otherProps) => {
+const addMarker = (location, title, label, otherProps) => {
   map.setCenter(location);
   const payload = {
     map: map,
     position: location,
     animation: google.maps.Animation.DROP,
-    label: label,
+    title,
+    label,
     ...otherProps
   };
 
