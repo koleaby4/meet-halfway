@@ -6,7 +6,7 @@ Help find location for catch up
     * JavaScript libraries:
       * jQuery
     * html validator https://validator.w3.org
-    * css validator https://jigsaw.w3.org/css-validator/validator
+    * css validator https://jigsaw.w3.org/css-validator
 
 
 # Resources
