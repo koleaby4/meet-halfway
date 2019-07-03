@@ -75,9 +75,11 @@ function setCentralPin() {
 
 const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
   const address = geocodeResponse ? geocodeResponse.formatted_address : JSON.stringify(fallbackLocaton)
-  return address.replace(/\s*,\s*/g, '<br>')
+  return replaceComma(address, '<br>')
 
 }
+
+const replaceComma = (input, newValue) => input.replace(/\s*,\s*/g, newValue)
 
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
@@ -265,15 +267,28 @@ const getInitials = name =>
     .join("");
 
 const lockRow = row => {
+
+  row.classList.add('card', 'bg-info', 'text-white')
+
   Array.from(row.getElementsByTagName("input")).forEach(element => {
     if (element.name == "name") {
-      element.value = `(${getInitials(element.value)}) ${element.value}`;
+      replaceInput(row, element, "h4", "card-title")
+    } else {
+      replaceInput(row, element, "p", "card-body")
     }
-    element.setAttribute("disabled", "disabled");
   });
 
   row.removeChild(row.querySelector("[class*=confirm-participant-button]"));
 };
+
+const replaceInput = (row, oldElement, newTag, classToAdd) => {
+  const newDiv = document.createElement(newTag)
+  newDiv.classList.add(classToAdd)
+  const newValue = document.createTextNode(oldElement.value)
+  newDiv.appendChild(newValue)
+  row.insertBefore(newDiv, oldElement);
+  row.removeChild(oldElement)
+}
 
 class Participant {
   constructor(name, address) {
