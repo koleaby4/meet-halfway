@@ -59,6 +59,12 @@ header {
   color: #fff;
 }
 
+#navbar .nav-link {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
 #navbar a.navbar-brand {
   padding-left: 0.1rem;
   padding-top: 0.5rem;
@@ -111,7 +117,7 @@ header {
   }
 }
 
-/* enable scrippbar on who-is-coming section for large devices */
+/* enable scrollbar on who-is-coming section for large devices */
 @media (min-width: 768px) {
   #who-is-coming-section {
     height: 100vh;
@@ -165,7 +171,7 @@ header {
 
 /* PLUS button for mobile devices to navigate
 from MAP view to Who-is-coming section */
-.float {
+.add-participant-float-button {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -179,7 +185,7 @@ from MAP view to Who-is-coming section */
 }
 
 @media (min-width: 768px) {
-  .float {
+  .add-participant-float-button {
     visibility: hidden;
   }
 }
