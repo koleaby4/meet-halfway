@@ -75,7 +75,9 @@ function setCentralPin() {
 
 const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
   const address = geocodeResponse ? geocodeResponse.formatted_address : JSON.stringify(fallbackLocaton)
-  return address.replace(/\s*,\s*/g, '<br>')
+  const formattedAddress = `<div id="central-pin-info-window">${address.replace(/\s*,\s*/g, '<br>')}</div>`
+  console.log(formattedAddress)
+  return formattedAddress
 
 }
 

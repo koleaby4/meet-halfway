@@ -184,6 +184,13 @@ from MAP view to Who-is-coming section */
   }
 }
 
+#central-pin-info-window {
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  color: #000;
+  transition: all 1s ease-in-out;
+}
+
 /* FOOTER */
 
 footer {
