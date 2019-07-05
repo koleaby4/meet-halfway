@@ -53,18 +53,21 @@ function setCentralPin() {
       animation: google.maps.Animation.BOUNCE
     });
 
-    var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow;
+    var geocoder = new google.maps.Geocoder();
+    var infowindow = new google.maps.InfoWindow();
 
-    marker.addListener('click', () => {
+    marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ 'location': center }, function (results, status) {
-        if (status === 'OK') {
-          infowindow.setContent(getPrintableAddress(results[0], center))
+      geocoder.geocode({ location: center }, function(results, status) {
+        if (status === "OK") {
+          infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
         } else {
-          showAlert('Geocode was not successful', `Reason: ${errorMap[status] || status}`)
+          showAlert(
+            "Geocode was not successful",
+            `Reason: ${errorMap[status] || status}`
+          );
         }
       });
     });
@@ -74,12 +77,16 @@ function setCentralPin() {
 }
 
 const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
-  const address = geocodeResponse ? geocodeResponse.formatted_address : JSON.stringify(fallbackLocaton)
-  const formattedAddress = `<div id="central-pin-info-window">${address.replace(/\s*,\s*/g, '<br>')}</div>`
-  console.log(formattedAddress)
-  return formattedAddress
-
-}
+  const address = geocodeResponse
+    ? geocodeResponse.formatted_address
+    : JSON.stringify(fallbackLocaton);
+  const formattedAddress = `<div id="central-pin-info-window">${address.replace(
+    /\s*,\s*/g,
+    "<br>"
+  )}</div>`;
+  console.log(formattedAddress);
+  return formattedAddress;
+};
 
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
@@ -164,8 +171,8 @@ const confirmParticipant = button => {
     reflectChangesOnMap();
   });
 
-  if (document.querySelectorAll('.confirm-participant-button').length < 2) {
-    addParticipantRow(true)
+  if (document.querySelectorAll(".confirm-participant-button").length < 2) {
+    addParticipantRow(true);
   }
 };
 
@@ -242,44 +249,55 @@ const addParticipant = (participant, callback) => {
       appendParticipantToLocalStorage(participant);
       callback();
     } else {
-      showAlert('Geocode was not successful', `Reason: ${errorMap[status] || status}`)
+      showAlert(
+        "Geocode was not successful",
+        `Reason: ${errorMap[status] || status}`
+      );
     }
   });
 };
 
 const errorMap = {
-  'INVALID_REQUEST': 'Address not provided',
-  'ZERO_RESULTS': 'Address not found'
-}
+  INVALID_REQUEST: "Address not provided",
+  ZERO_RESULTS: "Address not found"
+};
 
 const showAlert = (title, text) =>
   Swal.fire({
     title,
     text,
-    type: 'warning',
-    confirmButtonText: 'Cool'
-  })
+    type: "warning",
+    confirmButtonText: "Cool"
+  });
 
 const showHelp = () =>
   Swal.fire({
     html: `<h2>How to use this website</h2>
     <div class="help-heading table-primary">Main purpose</div>
-    <p>Find a fair location for meeting a geographically distributed group of people</p>
+    <p>Find a central location for meeting a geographically distributed group of people</p>
+    
     <div class="help-heading table-primary">Situation</div>
     <p>Let's imagine you want to organise a family event, catchup with friends or a business meeting. Great!
     The choice of place is obvious - it should be convenient for you, the organiser :) Right?...</p>
+    
     <div class="help-heading table-primary">Complication</div>
     <p>Hm... but what would other people think of your organisational skills?
-    <br>Yes, remember - those other 9 people, who will have to fly from Canada, USA and New Zealand
+    <br>Yes, remember - those other people, who will have to fly from Canada, USA and New Zealand
     to meet you at your lively <a href="https://en.wikipedia.org/wiki/Pyramiden" target="_blank">Pyramiden</a> at the north of Norway...<p>
 
-    <div class="heading">Main purpose - find a fair location for meeting friends, partners, etc.<div>
-    `
-    ,
-    confirmButtonText: 'Cool'
-  })
+    <div class="help-heading table-primary">Resolution</div>
+    <p>This website is here to help you finding a central point for the meeting in just 3 steps :)</p>
+    <ol>
+      <li>Add participants on 'Who is coming section' (watch them appear on the map as you confirm their details)</li>
+      <li>Click 'central location' pin to explore nearby area</li>
+      <li>Share location details by either sending participants screen shot of the central location or send them respective address<li>
+    </ol>      
 
+    <div class="help-heading table-primary">Additional features</div>
 
+    `,
+    confirmButtonText: "Cool"
+  });
 
 const getInitials = name =>
   name

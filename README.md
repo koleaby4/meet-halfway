@@ -158,7 +158,8 @@ I truly believe it is a very clear set of instructions and trying to re-write th
 
 1. Images: https://unsplash.com
 2. Google Maps API [documentation](https://developers.google.com/maps/documentation/javascript)
-3. Code snippets:
+3. [Situation-Complication-Resolution](https://speakingsherpa.com/how-to-tell-a-business-story-using-the-mckinsey-situation-complication-resolution-scr-framework/) presentation technique
+4. Code snippets:
    - <toBeAadded>
 
 ## Acknowledgements
