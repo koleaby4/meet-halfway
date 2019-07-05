@@ -23,6 +23,15 @@ html {
 
 /* ---- COMMON ----  */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-shadow: none;
+}
+
 h1 {
   margin: 0 auto;
   padding: 40px 0;
@@ -192,9 +201,39 @@ from MAP view to Who-is-coming section */
 
 #central-pin-info-window {
   padding: 0.2rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #000;
   transition: all 1s ease-in-out;
+}
+
+/* HELP */
+
+div[class~="swal2-popup"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+div[class~="swal2-popup"] p {
+  line-height: 150%;
+  text-align: justify;
+}
+
+.help-heading {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  padding: 0.3rem;
+}
+
+@media (min-width: 768px) {
+  div[class~="swal2-popup"] {
+  }
+
+  div[class~="swal2-popup"] p {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    margin: 1.5rem;
+    text-align: justify;
+  }
 }
 
 /* FOOTER */

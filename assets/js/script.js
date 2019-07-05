@@ -260,6 +260,27 @@ const showAlert = (title, text) =>
     confirmButtonText: 'Cool'
   })
 
+const showHelp = () =>
+  Swal.fire({
+    html: `<h2>How to use this website</h2>
+    <div class="help-heading table-primary">Main purpose</div>
+    <p>Find a fair location for meeting a geographically distributed group of people</p>
+    <div class="help-heading table-primary">Situation</div>
+    <p>Let's imagine you want to organise a family event, catchup with friends or a business meeting. Great!
+    The choice of place is obvious - it should be convenient for you, the organiser :) Right?...</p>
+    <div class="help-heading table-primary">Complication</div>
+    <p>Hm... but what would other people think of your organisational skills?
+    <br>Yes, remember - those other 9 people, who will have to fly from Canada, USA and New Zealand
+    to meet you at your lively <a href="https://en.wikipedia.org/wiki/Pyramiden" target="_blank">Pyramiden</a> at the north of Norway...<p>
+
+    <div class="heading">Main purpose - find a fair location for meeting friends, partners, etc.<div>
+    `
+    ,
+    confirmButtonText: 'Cool'
+  })
+
+
+
 const getInitials = name =>
   name
     .split(/\s+/)
