@@ -213,13 +213,17 @@ from MAP view to Who-is-coming section */
   display: none;
 }
 
+.swal2-title,
+.swal2-header {
+  margin: 0 auto;
+}
+
 div[class~="swal2-popup"] {
   padding: 0.8rem;
-  font-size: 1rem;
 }
 
 div[class~="swal2-popup"] p,
-div {
+div[class~="swal2-popup"] div {
   text-align: justify;
   line-height: 150%;
   margin-bottom: 0.8rem;
@@ -249,29 +253,38 @@ a:active {
 
 #help-modal img {
   display: block;
-  margin-top: .8rem;
-  margin-bottom: .8rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
 }
 
-.help-heading {
-  font-size: 1.5rem;
-  margin: 1rem 0;
-  padding: 0.3rem;
+#swal2-content .help-heading {
+  font-size: 1.3rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
-  div[class~="swal2-popup"] {
+  #help-modal img {
+    width: 40%;
   }
 
-  div[class~="swal2-popup"] p {
-    font-size: 0.9rem;
+  #help-modal {
+    padding: 1.125rem;
+    padding-bottom: 0;
+  }
+
+  div[class~="swal2-popup"] pб div[class~="swal2-popup"] div {
+    font-size: 1.125rem;
     padding: 0.5rem;
     margin: 1.5rem;
     text-align: justify;
   }
+}
+
+div.swal2-actions {
+  margin-top: 0;
 }
 
 /* FOOTER */

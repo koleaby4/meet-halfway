@@ -132,6 +132,7 @@ I truly believe it is a very clear set of instructions and trying to re-write th
 2.  Web technologies:
     - [HTML](https://en.wikipedia.org/wiki/HTML5)
     - [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#CSS_3)
+    - [JavaScript](ToBeAdde)
     - [jQuery](ToBeAdde)
 3.  Styling libraries and components:
     - [normalize.css](https://necolas.github.io/normalize.css)

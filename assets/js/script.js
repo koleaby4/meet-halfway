@@ -272,6 +272,7 @@ const showAlert = (title, text) =>
 
 const showHelp = () =>
   Swal.fire({
+    title: "User Guide",
     html: document.querySelector('#help-modal').outerHTML.toString(),
     confirmButtonText: "Cool"
   });
