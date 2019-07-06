@@ -272,30 +272,7 @@ const showAlert = (title, text) =>
 
 const showHelp = () =>
   Swal.fire({
-    html: `
-    <div id="help-modal">
-      <div class="help-heading table-primary">Situation</div>
-      <p>Let's imagine you want to organise a family event, catchup with friends or a business meeting. Great!
-      The choice of place is obvious - it should be convenient for you, the organiser :) Right?...</p>
-
-      <div class="help-heading table-danger">Complication</div>
-      <p>Hm... but what would other people think of your organisational skills?
-      <br>Yes, remember - the other people, who will have to fly from Canada, USA and New Zealand
-      to meet you at your lively <a href="https://en.wikipedia.org/wiki/Pyramiden" target="_blank">Pyramiden</a> at the north of Norway...</p>
-
-      <div class="help-heading table-success">Resolution</div>
-      <p>We can help you finding a central point for the meeting in just 3 steps :)</p>
-      <ol>
-        <li>Add participants on 'Who is coming section' (watch them appear on the map as you confirm their details)
-          <img src="assets/images/help-who-is-coming.png">
-        </li>
-        <li>Click 'central location' pin to explore nearby area</li>
-        <li>Share location details by either sending participants screen shot of the central location or send them respective address</li>
-      </ol>
-
-      <div class="help-heading table-primary">Additional features</div>
-    </div>
-    `,
+    html: document.querySelector('#help-modal').outerHTML.toString(),
     confirmButtonText: "Cool"
   });
 
