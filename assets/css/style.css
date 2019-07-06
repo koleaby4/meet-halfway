@@ -209,13 +209,35 @@ from MAP view to Who-is-coming section */
 /* HELP */
 
 div[class~="swal2-popup"] {
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 1rem;
 }
 
 div[class~="swal2-popup"] p {
-  line-height: 150%;
   text-align: justify;
+  line-height: 150%;
+}
+.swal2-content a:link,
+a:visited {
+  color: rgb(48, 133, 214);
+  text-decoration: none;
+}
+
+.swal2-content a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+.swal2-content ol {
+  margin: 0.8rem;
+}
+
+.swal2-content ol li {
+  /* padding: 20px; */
+  list-style-type: decimal;
+  text-align: left;
+  margin-top: 0.8rem;
+  line-height: 150%;
 }
 
 .help-heading {
