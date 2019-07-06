@@ -192,6 +192,9 @@ const zoomToMarkers = () => {
     bounds.extend(pins[i].position);
   }
   map.fitBounds(bounds);
+  if (pins.length == 1) {
+    map.setZoom(15)
+  }
 };
 
 const addMarkerForParticipant = participant =>
