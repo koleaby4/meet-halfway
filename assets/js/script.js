@@ -9,6 +9,9 @@ function setUp() {
     loadParticipantsFromLocalStorage();
   } else {
     addParticipantRow(false);
+    if (!localStorage.tutorialWatched) {
+      showHelp()
+    }
   }
 }
 
@@ -275,7 +278,7 @@ const showHelp = () =>
     title: "User Guide",
     html: document.querySelector('#help-modal').outerHTML.toString(),
     confirmButtonText: "Cool"
-  });
+  }).then(() => localStorage.tutorialWatched = true);
 
 const getInitials = name =>
   name
