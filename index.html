@@ -51,7 +51,13 @@
     <!-- Who is coming -->
 
     <section id="who-is-coming-section">
-      <h2>Who is coming?</h2>
+
+      <div class="grid-container">
+        <h2>Who is coming?</h2>
+        <a href="#map-view-section" class="map-view-float-button">
+          <img src="assets/images/map-icon.svg" alt="jump to map view">
+        </a>
+      </div>
       <div class="add-participant">
         <button type="button" class="btn btn-lg btn-block btn-success add-participant-button" id="addrow" accesskey="a"
           onclick="addParticipantRow()">
@@ -65,7 +71,7 @@
 
     <section id="map-view-section" class="map-view-section">
       <a href="#who-is-coming-section" class="add-participant-float-button">
-        <img src="assets/images/plus-icon.svg" alt="button to add participants">
+        <img src="assets/images/plus-icon.svg" alt="add participants">
       </a>
 
       <div id="map">

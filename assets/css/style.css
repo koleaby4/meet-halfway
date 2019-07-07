@@ -115,6 +115,49 @@ header {
   min-height: 100vh;
 }
 
+#who-is-coming-section .grid-container {
+  display: grid;
+  grid-template-columns: auto 60px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  #who-is-coming-section .grid-container {
+    grid-template-columns: auto;
+    justify-content: center;
+  }
+}
+
+#who-is-coming-section h2 {
+  font-size: 1.3rem;
+}
+
+/* MAP button for mobile devices to navigate
+from Who-is-coming section MAP view */
+.map-view-float-button {
+  /* position: absolute; */
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 105px;
+  right: 25px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1;
+}
+
+.map-view-float-button img {
+  height: 3rem;
+  width: 3rem;
+}
+
+@media (min-width: 768px) {
+  .map-view-float-button {
+    display: none;
+  }
+}
+
 #who-is-coming-section .add-participant {
   width: 100%;
 }
@@ -182,13 +225,12 @@ header {
 from MAP view to Who-is-coming section */
 .add-participant-float-button {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 2rem;
+  height: 2rem;
   bottom: 25px;
   left: 15px;
   background-color: #62c462;
-  /* color: #fff; */
-  border-radius: 50px;
+  border-radius: 5px;
   text-align: center;
   z-index: 1;
 }
