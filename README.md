@@ -2,9 +2,11 @@
 
 This project builds website for people, who want to find a location for meeting geographically distributed people.
 
-When trying to bring together people from different locations, there is always a question where to meet. Travel distances might differ significantly and, as a result, the organisers might feel obliged to accommodate some people at expense of others.
+When trying to bring together people from different locations, there is always a question where to meet.
+<br>Travel distances might differ significantly and, as a result, the organisers might feel obliged to accommodate some people at expense of others.
 
-This website is designed to help by calculating [centroid](https://en.wikipedia.org/wiki/Centroid) - in context of maps, it is the geographical average location for provided coordinates.
+This website is designed to help by calculating [centroid](https://en.wikipedia.org/wiki/Centroid)
+<br>in context of maps, it is the geographical average location for provided coordinates.
 
 ## Website URL
 
@@ -16,12 +18,12 @@ Our typical customer is a socially active person 15+ years old
 who is planning to organise a meeting with family members, friends, colleagues of business counterparts.
 
 The customer would have names and addresses of the meeting participants and would want to be able to:
-    1. add / remove participants
-    2. see their names and location on the maps
-    3. see central location (centroid) as soon as 2 or more participants are added
-    4. access formatted address of the central location (so it could be easily shared)
-    5. explore nearby places on the map around the central location
-    6. restore previously confirmed participants in case browsing session was interrupted
+1. add / remove participants
+2. see their names and location on the maps
+3. see central location (centroid) as soon as 2 or more participants are added
+4. access formatted address of the central location (so it could be easily shared)
+5. explore nearby places on the map around the central location
+6. restore previously confirmed participants in case browsing session was interrupted
 
 Depending on circumstances, our customers want to be able to comfortably use the website from both desktop and mobile devices.
 
@@ -116,11 +118,12 @@ The instructions are very clear and trying to re-write them in my own words:
 ## Validations
 
 1. HTML validations:
-   - [User story](https://github.com/koleaby4/<link to ticket ToBeAdded>)
+   - [User story](https://github.com/koleaby4/meet-halfway/issues/15)
    - [Full report](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkoleaby4.github.io%2Fmeet-halfway%2F)
 2. CSS validations:
-   - [User story](https://github.com/koleaby4/<link to ticket ToBeAdded>)
-   - [Full report](ToBeAdded)
+   - [User story](https://github.com/koleaby4/meet-halfway/issues/16)
+   - [Full report](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkoleaby4.github.io%2Fmeet-halfway%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+   please note that existing failures are from 3rd party libraries.
 
 ## Tools and technologies used
 
