@@ -318,6 +318,8 @@ const participantFactory = row => {
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.53037, lng: -0.173648 },
-    zoom: 8
+    zoom: 8,
+    mapTypeControl: false,
+    fullscreenControl: false
   });
 }
