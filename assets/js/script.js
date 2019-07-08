@@ -87,12 +87,12 @@ const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
     /\s*,\s*/g,
     "<br>"
   )}</div>`;
-  console.log(formattedAddress);
   return formattedAddress;
 };
 
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
+    // insert a new row and populate it from local store
     addParticipantRow();
     const row = $(".participant-row").first();
     row
@@ -113,7 +113,7 @@ function addParticipantRow(withFocusOnButton = true) {
   );
 
   let cols =
-    '<input type="text" class="form-control col-12" name="name" placeholder="Name" />';
+    <input type="text" class="form-control col-12" name="name" placeholder="Name" />';
   cols +=
     '<input type="text" class="form-control col-12" name="address" placeholder="Address" />';
   cols += `<button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
