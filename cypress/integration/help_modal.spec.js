@@ -1,4 +1,4 @@
-import { assertModalContent } from "../helpers/help-modal";
+import { assertModalContent, closeHelpModal } from "../helpers/help-modal";
 import { setMobileViewport } from "../helpers/common";
 import { clickHelpLink } from "../helpers/navbar";
 
@@ -8,11 +8,9 @@ describe("Help modal", () => {
 
     assertModalContent();
 
-    cy.contains("Cool")
-      .click()
-      .then(() => {
-        expect(localStorage.getItem("tutorialWatched")).to.eq("true");
-      });
+    closeHelpModal().then(() => {
+      expect(localStorage.getItem("tutorialWatched")).to.eq("true");
+    });
 
     setMobileViewport();
     clickHelpLink(true);

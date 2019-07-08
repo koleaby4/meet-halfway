@@ -6,3 +6,5 @@ export const assertModalContent = () => {
     cy.get(".help-heading").contains("Resolution");
   });
 };
+
+export const closeHelpModal = () => cy.contains("Cool").click();
