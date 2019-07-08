@@ -1,0 +1,24 @@
+{
+  "name": "meet-halfway",
+  "version": "1.0.0",
+  "description": "This project builds website for people, who want to find a location for meeting geographically distributed people.",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^3.3.2"
+  },
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koleaby4/meet-halfway.git"
+  },
+  "author": "Nicolai Negru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koleaby4/meet-halfway/issues"
+  },
+  "homepage": "https://github.com/koleaby4/meet-halfway#readme"
+}
