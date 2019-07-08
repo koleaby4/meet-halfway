@@ -10,7 +10,7 @@ function setUp() {
   } else {
     addParticipantRow(false);
     if (!localStorage.tutorialWatched) {
-      showHelp()
+      showHelp();
     }
   }
 }
@@ -62,7 +62,7 @@ function setCentralPin() {
     marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ location: center }, function (results, status) {
+      geocoder.geocode({ location: center }, function(results, status) {
         if (status === "OK") {
           infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
@@ -113,7 +113,7 @@ function addParticipantRow(withFocusOnButton = true) {
   );
 
   let cols =
-    <input type="text" class="form-control col-12" name="name" placeholder="Name" />';
+    '<input type="text" class="form-control col-12" name="name" placeholder="Name" />';
   cols +=
     '<input type="text" class="form-control col-12" name="address" placeholder="Address" />';
   cols += `<button type="button" class="btn btn-success confirm-participant-button" onclick="confirmParticipant(this)">
@@ -193,7 +193,7 @@ const zoomToMarkers = () => {
   }
   map.fitBounds(bounds);
   if (pins.length == 1) {
-    map.setZoom(15)
+    map.setZoom(15);
   }
 };
 
@@ -279,9 +279,9 @@ const showAlert = (title, text) =>
 const showHelp = () =>
   Swal.fire({
     title: "User Guide",
-    html: document.querySelector('#help-modal').outerHTML.toString(),
+    html: document.querySelector("#help-modal").outerHTML.toString(),
     confirmButtonText: "Cool"
-  }).then(() => localStorage.tutorialWatched = true);
+  }).then(() => (localStorage.tutorialWatched = true));
 
 const getInitials = name =>
   name
