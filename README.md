@@ -5,12 +5,12 @@ This project builds website for people, who want to find a location for meeting 
 When trying to bring together people from different locations, there is always a question where to meet.
 <br>Travel distances might differ significantly and, as a result, the organisers might feel obliged to accommodate some people at expense of others.
 
-This website is designed to help by calculating [centroid](https://en.wikipedia.org/wiki/Centroid)
-<br>in context of maps, it is the geographical average location for provided coordinates.
+This website is designed to help by calculating [centroid](https://en.wikipedia.org/wiki/Centroid).
+<br>In context of maps, centroid is the geographical average location for provided coordinates.
 
 ## Website URL
 
-The project has been published to GitHub pages and can be accessed [here](https://koleaby4.github.io/meet-halfway)
+The project has been published to GitHub pages and can be accessed [here](https://koleaby4.github.io/meet-halfway).
 
 ## Customers' profile and needs
 
@@ -55,13 +55,19 @@ Examples:
 
 ## How we tested it
 
-Functional tests have been carried out manually on regular basis using:
+Functional tests have been carried out manually on regular basis.
+Special attention was paid to cross-browser and cross-platform compatibility by using:
 
 - Physical devices
     1. Windows10 & Chrome (desktop)
     2. Windows10 & IE11 (desktop)
     3. Google Pixel 2 & Chrome (mobile)
 - Virtual devices: Apple iPhone X via [SauceLabs](https://saucelabs.com)
+
+Both positive and error flows were tested.<br>
+User-friendly error messages were implemented to be shown to the customers when:
+* Addresses were not entered by the user or were not found by Google Maps API
+* Service requests failed for technical reasons.
 
 Automated tests using [cypress](https://www.cypress.io) have been added to landing and services sections.
 We also created a task to [add more automated tests](https://github.com/koleaby4/meet-halfway/issues/28) in the future.
