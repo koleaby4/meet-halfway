@@ -18,6 +18,7 @@ function setUp() {
 const numberOfParticipants = () =>
   Object.keys(getParticipantsFromLocalStorage()).length;
 
+// return central location for specified participants
 const centralLocation = participants => {
   if (Object.keys(participants).length <= 1) {
     return {};
@@ -34,6 +35,8 @@ const centralLocation = participants => {
 const average = collection =>
   collection.reduce((a, b) => a + b, 0) / collection.length;
 
+/* drop central pin on the map
+    & configure its event listenerto display address */
 function setCentralPin() {
   const center = centralLocation(getParticipantsFromLocalStorage());
 
@@ -62,7 +65,7 @@ function setCentralPin() {
     marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ location: center }, function(results, status) {
+      geocoder.geocode({ location: center }, function (results, status) {
         if (status === "OK") {
           infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
@@ -79,10 +82,12 @@ function setCentralPin() {
   }
 }
 
+// format address for cetral pin
 const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
   const address = geocodeResponse
     ? geocodeResponse.formatted_address
     : JSON.stringify(fallbackLocaton);
+  // replace whitespaces with <br> for more compact form
   const formattedAddress = `<div id="central-pin-info-window">${address.replace(
     /\s*,\s*/g,
     "<br>"
@@ -90,6 +95,7 @@ const getPrintableAddress = (geocodeResponse, fallbackLocaton) => {
   return formattedAddress;
 };
 
+// pre-populate Who-is-coming form from local storage
 function loadParticipantsFromLocalStorage() {
   Object.values(getParticipantsFromLocalStorage()).forEach(participant => {
     // insert a new row and populate it from local store
@@ -107,7 +113,12 @@ function loadParticipantsFromLocalStorage() {
   });
 }
 
+/* add Name + Address input boxes
+  followed by confirmation and deletion buttons */
 function addParticipantRow(withFocusOnButton = true) {
+
+  // opting for string HTML over JavaScript DOM manipulations
+  // because it is more compact and there is no risk of HTML injections
   var newRow = $(
     '<div class="participant-row row align-items-center justify-content-center">'
   );
@@ -124,11 +135,14 @@ function addParticipantRow(withFocusOnButton = true) {
   newRow.append(cols);
   $("#who-is-coming-table").prepend(newRow);
 
+  // option to automatically set focus to Name
+  // for better (mouse-less) user experience
   if (withFocusOnButton) {
     document.querySelector("input[name='name']").focus();
   }
 }
 
+// delete a participant and trigger map updates
 const deleteParticipantRow = event => {
   const div = $(event).closest("div")[0];
   const participantId = div.id;
@@ -185,6 +199,7 @@ const reflectChangesOnMap = () => {
   drawLines();
 };
 
+// adjust map zoom level so that all pins are visible
 const zoomToMarkers = () => {
   const pins = Object.values(markers);
   var bounds = new google.maps.LatLngBounds();
@@ -204,6 +219,9 @@ const addMarkerForParticipant = participant =>
     getInitials(participant.name)
   ));
 
+
+// draw lines from every participant to central pin
+// for better visualisation of distances and locations
 const drawLines = () => {
   deleteLines();
 
@@ -244,6 +262,8 @@ const addMarker = (location, title, label, otherProps) => {
   return new google.maps.Marker(payload);
 };
 
+// given a participant - drop pin on the map
+// then run callback (needed due to async nature of geocoder.geocode)
 const addParticipant = (participant, callback) => {
   const geocoder = new google.maps.Geocoder();
 
@@ -263,11 +283,13 @@ const addParticipant = (participant, callback) => {
   });
 };
 
+// map of more user-friendly error messages
 const errorMap = {
   INVALID_REQUEST: "Address not provided",
   ZERO_RESULTS: "Address not found"
 };
 
+// custom and yet generic allert for given title and text
 const showAlert = (title, text) =>
   Swal.fire({
     title,
@@ -276,6 +298,8 @@ const showAlert = (title, text) =>
     confirmButtonText: "Cool"
   });
 
+// show help modal and mark it as watched ( localStorage.tutorialWatched )
+// so that it does not open by default on consecutive visit
 const showHelp = () =>
   Swal.fire({
     title: "User Guide",
@@ -289,10 +313,13 @@ const getInitials = name =>
     .map(word => word.trim()[0])
     .join("");
 
+// make name and address read-only
+// remove confirmation button
 const lockRow = row => {
   Array.from(row.getElementsByTagName("input")).forEach(element => {
     if (element.name == "name") {
-      element.value = `(${getInitials(element.value)}) ${element.value}`;
+      // if name not provided - overwrite placeholder with a space
+      element.value = element.value ? `(${getInitials(element.value)}) ${element.value}` : " ";
     }
     element.setAttribute("disabled", "disabled");
   });
@@ -300,6 +327,7 @@ const lockRow = row => {
   row.removeChild(row.querySelector("[class*=confirm-participant-button]"));
 };
 
+// data class for storing participant's details
 class Participant {
   constructor(name, address) {
     this.name = name;
@@ -308,6 +336,8 @@ class Participant {
   }
 }
 
+// read participant's name and address from the form
+// and return an initialised instance of Participant
 const participantFactory = row => {
   const [name, address] = Array.from(row.getElementsByTagName("input")).map(
     input => input.value
@@ -315,6 +345,7 @@ const participantFactory = row => {
   return new Participant(name, address);
 };
 
+// initialise map on load
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.53037, lng: -0.173648 },
