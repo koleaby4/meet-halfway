@@ -34,7 +34,7 @@ All user stories have been tracked using GitHub's [issues section](https://githu
 GitHub Issues is a lightweight equivalent of [Jira](https://www.atlassian.com/software/jira), <br>
 which is widely used for planning and tracking software development activities.
 
-By default all tickets represent functional user stories.<br>
+By default all tickets represent functional user stories. <br>
 Example of a user story: [Navbar on the top](https://github.com/koleaby4/meet-halfway/issues/18)
 
 Tickets with ['bug' label](https://github.com/koleaby4/meet-halfway/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Abug+),
@@ -53,6 +53,18 @@ Examples:
 - [Display Google maps [mobile]](https://github.com/koleaby4/meet-halfway/issues/5)
 - [Form for adding participants](https://github.com/koleaby4/meet-halfway/issues/4)
 
+## Why search of nearby places has been removed?
+
+One of the initial implementations allowed users to search for nearby places within 500m from central pin.
+Users were able to specify whether they wanted to see hotels, restaurants or pubs
+and respective locations were shown with their native icons, names and Google ratings.
+
+Although that functionality appeared to be useful at the design stage, it did not work well when implemented
+because Google Maps are showing all places by default and our custom icons were overlapping with already rendered on the map places.
+
+As a result, it was decided to remove custom search and marking of nearby places, allowing customers to work with native Google Maps functionality.
+This resulted in cleaner and more familiar customer experience.
+
 ## How we tested it
 
 Functional tests have been carried out manually on regular basis.
@@ -64,7 +76,7 @@ Special attention was paid to cross-browser and cross-platform compatibility by 
     3. Google Pixel 2 & Chrome (mobile)
 - Virtual devices: Apple iPhone X via [SauceLabs](https://saucelabs.com)
 
-Both positive and error flows were tested.<br>
+Both positive and error flows were tested. <br>
 User-friendly error messages were implemented to be shown to the customers when:
 * Addresses were not entered by the user or were not found by Google Maps API
 * Service requests failed for technical reasons.
