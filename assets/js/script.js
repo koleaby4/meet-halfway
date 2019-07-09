@@ -191,7 +191,18 @@ const confirmParticipant = button => {
   if (document.querySelectorAll(".confirm-participant-button").length < 2) {
     addParticipantRow(true);
   }
+
+  shakeElement('.map-view-float-button img', 3000, 1)
+
 };
+
+const shakeElement = (selector, duration, delay = 0) => {
+  document.querySelector(selector).style.animation = "button-pulse 1s 1"
+  if (delay > 0) {
+    document.querySelector(selector).style["animation-delay"] = `${delay}s`;
+  }
+  setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, duration);
+}
 
 const reflectChangesOnMap = () => {
   setCentralPin();

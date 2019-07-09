@@ -175,6 +175,11 @@ The instructions are very clear and trying to re-write them in my own words:
 1. Images: [Unsplash](https://unsplash.com)
 2. [Google Maps API documentation](https://developers.google.com/maps/documentation/javascript)
 
+## Code snippets
+
+1. [Shake pattern](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_shake)
+
+
 ## Acknowledgements
 
 Special thank you to the people who guided and supported me during planning, execution and testing of this project:
