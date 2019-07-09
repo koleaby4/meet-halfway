@@ -295,7 +295,8 @@ const showAlert = (title, text) =>
     title,
     text,
     type: "warning",
-    confirmButtonText: "Cool"
+    confirmButtonText: "Cool",
+    timer: 4000
   });
 
 // show help modal and mark it as watched ( localStorage.tutorialWatched )
@@ -304,7 +305,8 @@ const showHelp = () =>
   Swal.fire({
     title: "User Guide",
     html: document.querySelector("#help-modal").outerHTML.toString(),
-    confirmButtonText: "Cool"
+    confirmButtonText: "Cool",
+    showCloseButton: true
   }).then(() => (localStorage.tutorialWatched = true));
 
 const getInitials = name =>
