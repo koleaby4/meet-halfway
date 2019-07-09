@@ -10,7 +10,7 @@ This website is designed to help by calculating [centroid](https://en.wikipedia.
 
 ## Website URL
 
-https://koleaby4.github.io/meet-halfway
+The project has been published to GitHub pages and can be accessed [here](https://koleaby4.github.io/meet-halfway)
 
 ## Customers' profile and needs
 
@@ -27,9 +27,6 @@ The customer would have names and addresses of the meeting participants and woul
 
 Depending on circumstances, our customers want to be able to comfortably use the website from both desktop and mobile devices.
 
-## Our business goal
-
-< To be added >
 
 ## User Stories
 
@@ -80,8 +77,10 @@ Finally, a series of peer reviews helped identifying additional issues such as:
 
 ### Known issues
 
-All known defects have been captured as GitHub issues and [marked by 'bug' label](https://github.com/koleaby4/meet-halfway/labels/bug).<br>
-Example: [Website does not work in Edge and IE11](https://github.com/koleaby4/meet-halfway/issues/26).
+All known defects have been captured as GitHub issues and [marked by 'bug' label](https://github.com/koleaby4/meet-halfway/labels/bug).
+<br>As part of the project work we've addressed some of the issues found in testing.
+<br>We continue investigation of the remaining open issues such as [Website does not work in Edge and IE11](https://github.com/koleaby4/meet-halfway/issues/26).
+
 
 ## How to run cypress tests
 
@@ -109,7 +108,7 @@ The instructions are very clear and trying to re-write them in my own words:
 
 ## How to open it locally
 
-1. Navigate to project repository: https://github.com/koleaby4/meet-halfway
+1. Navigate to project repository: `https://github.com/koleaby4/meet-halfway`
 2. Follow [GitHub cloning instructions](https://help.github.com/en/articles/cloning-a-repository) to download or clone source files
 3. Navigate to the project folder and open `config.js` file. Replace apiKey with your own Google Maps API key
     <br>(Google maps services are not free, so key provided with this project's source codes have been restricted to only with for specific domains)
@@ -132,7 +131,7 @@ The instructions are very clear and trying to re-write them in my own words:
     - [HTML](https://en.wikipedia.org/wiki/HTML5)
     - [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets#CSS_3)
     - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-    - [jQuery]([ToBeAdde](https://en.wikipedia.org/wiki/JQuery))
+    - [jQuery](https://en.wikipedia.org/wiki/JQuery)
 3.  Styling libraries and components:
     - [normalize.css](https://necolas.github.io/normalize.css)
     - [Bootstrap](https://getbootstrap.com)
@@ -155,9 +154,8 @@ The instructions are very clear and trying to re-write them in my own words:
 
 ## External resources / credits
 
-1. Images: https://unsplash.com
-2. Google Maps API [documentation](https://developers.google.com/maps/documentation/javascript)
-3. [Situation-Complication-Resolution](https://speakingsherpa.com/how-to-tell-a-business-story-using-the-mckinsey-situation-complication-resolution-scr-framework/) presentation technique
+1. Images: [Unsplash](https://unsplash.com)
+2. [Google Maps API documentation](https://developers.google.com/maps/documentation/javascript)
 
 ## Acknowledgements
 
