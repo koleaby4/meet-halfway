@@ -86,20 +86,6 @@ h2 {
 
 /* landing */
 
-header {
-  background-image: url("../images/landing-background.jpg");
-  background-size: cover;
-  background-position: bottom;
-  background-attachment: fixed;
-}
-
-/* only display landing page for larger devices */
-@media (min-width: 768px) {
-  header {
-    height: 100vh;
-  }
-}
-
 /* NAVBAR */
 
 #navbar .nav-link:hover {
@@ -140,7 +126,7 @@ body {
       rgba(0, 0, 0, 0.4) 0%,
       rgba(153, 218, 255, 0.3) 100%
     ),
-    url(https://unsplash.it/1920/1080); /* radial scrim and background image */
+    url("../images/landing-background.jpg"); /* radial scrim and background image */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -151,6 +137,14 @@ body {
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+/* only display landing page for larger devices */
+@media (min-width: 768px) {
+  .hero {
+    height: 100vh;
+    display: flex;
+  }
 }
 
 .hero-title {
