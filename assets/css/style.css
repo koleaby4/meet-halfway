@@ -126,6 +126,44 @@ header {
   transition: all 0.4s ease-in-out;
 }
 
+/* landing page overlay */
+
+body {
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.hero {
+  height: 100vh;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(153, 218, 255, 0.3) 100%
+    ),
+    url(https://unsplash.it/1920/1080); /* radial scrim and background image */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: calc(16px + 5vw);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.hero-content {
+  font-size: calc(16px + 1vw);
+}
+
 /* WORKING AREA */
 
 #working-area {
