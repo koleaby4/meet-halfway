@@ -21,7 +21,7 @@
 
   <!-- NAVBAR -->
   <header>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav id="navbar" class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary">
       <a class="navbar-brand" href="#"><img src="assets/images/Logo-transparent.png" alt="logo" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
         aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +44,14 @@
       </div>
     </nav>
 
-    <div class="hero">
-      <h1 class="hero-title">Libero Temporibus</h1>
-      <p class="hero-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <div class="overlay">
+      <h1 class="overlay-title">Meet halfway</h1>
+      <p class="overlay-content">Bringing people together is great!</p>
+      <a data-role="none" href="#who-is-coming-section">
+        <button type="button" class="btn btn-lg btn-success">
+          Let's get started!
+        </button>
+      </a>
     </div>
 
   </header>
@@ -63,8 +68,8 @@
         </a>
       </div>
       <div class="add-participant">
-        <button type="button" class="btn btn-lg btn-block btn-success add-participant-button" id="addrow"
-          accesskey="a" onclick="addParticipantRow()">
+        <button type="button" class="btn btn-lg btn-block btn-success add-participant-button" id="addrow" accesskey="a"
+          onclick="addParticipantRow()">
           Add participant
         </button>
       </div>
@@ -102,23 +107,20 @@
       <div class="help-heading table-danger">Complication</div>
       <p>Hm... but what would other people think of your organisational skills?
         <br>Yes, remember - the other people, who will have to fly from Canada, USA and New Zealand
-        to meet you at your lively <a href="https://en.wikipedia.org/wiki/Pyramiden"
-          target="_blank">Pyramiden</a> at
+        to meet you at your lively <a href="https://en.wikipedia.org/wiki/Pyramiden" target="_blank">Pyramiden</a> at
         the
         north of Norway...</p>
 
       <div class="help-heading table-success">Resolution</div>
       <p>We can help you finding central point for the meeting :)</p>
-      <img src="assets/images/Logo-transparent.png"
-        alt="chart showing participants and their central location">
+      <img src="assets/images/Logo-transparent.png" alt="chart showing participants and their central location">
       <div><strong>Step 1:</strong> Scroll to 'Who is coming' section or select it from top menu.</div>
       <div><strong>Step 2:</strong> Enter and confirm participants' names and addresses.</div>
       <img src="assets/images/help-who-is-coming.png" alt="image showing form for adding names and addresses">
       <div><strong>Step 3:</strong> Scroll to 'Map view' section or select it from top menu to see the central
         location.
       </div>
-      <img src="assets/images/help-map-view.png"
-        alt="image showing participants and their central location on the map">
+      <img src="assets/images/help-map-view.png" alt="image showing participants and their central location on the map">
       <div><strong>Step 4:</strong> Click on the central pin to see address of the place and use map for
         exploring
         nearby area for restaurants, hotels, etc.
@@ -137,8 +139,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   <script src="assets/js/script.js"></script>
 
 </body>
