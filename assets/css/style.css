@@ -144,7 +144,7 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -162,6 +162,12 @@ body {
 
 .hero-content {
   font-size: calc(16px + 1vw);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    display: flex;
+  }
 }
 
 /* WORKING AREA */
