@@ -192,14 +192,14 @@ const confirmParticipant = button => {
     addParticipantRow(true);
   }
 
-  shakeElement('.map-view-float-button img', 3000, 1)
+  shakeElement('.map-view-float-button img', 5, 2)
 
 };
 
-const shakeElement = (selector, duration, delay) => {
-  document.querySelector(selector).style.animation = `button-pulse 1s ease-in-out ${delay}`
+const shakeElement = (selector, resetAfter, delay) => {
+  document.querySelector(selector).style.animation = `button-pulse 1s ease-in-out ${delay}s`
   // reset animation - so we could use it again
-  setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, duration);
+  setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, resetAfter * 1000);
 }
 
 const reflectChangesOnMap = () => {
