@@ -196,11 +196,9 @@ const confirmParticipant = button => {
 
 };
 
-const shakeElement = (selector, duration, delay = 0) => {
-  document.querySelector(selector).style.animation = "button-pulse 1s 1"
-  if (delay > 0) {
-    document.querySelector(selector).style["animation-delay"] = `${delay}s`;
-  }
+const shakeElement = (selector, duration, delay) => {
+  document.querySelector(selector).style.animation = `button-pulse 1s ease-in-out ${delay}`
+  // reset animation - so we could use it again
   setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, duration);
 }
 
