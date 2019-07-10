@@ -65,7 +65,7 @@ function setCentralPin() {
     marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ location: center }, function (results, status) {
+      geocoder.geocode({ location: center }, function(results, status) {
         if (status === "OK") {
           infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
@@ -116,7 +116,6 @@ function loadParticipantsFromLocalStorage() {
 /* add Name + Address input boxes
   followed by confirmation and deletion buttons */
 function addParticipantRow(withFocusOnButton = true) {
-
   // opting for string HTML over JavaScript DOM manipulations
   // because it is more compact and there is no risk of HTML injections
   var newRow = $(
@@ -192,17 +191,17 @@ const confirmParticipant = button => {
     addParticipantRow(true);
   }
 
-  shakeElement('.map-view-float-button img', 3000, 1)
-
+  shakeElement(".map-view-float-button img", 3);
 };
 
-const shakeElement = (selector, duration, delay = 0) => {
-  document.querySelector(selector).style.animation = "button-pulse 1s 1"
-  if (delay > 0) {
-    document.querySelector(selector).style["animation-delay"] = `${delay}s`;
-  }
-  setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, duration);
-}
+const shakeElement = (selector, duration, delay = 1) => {
+  document.querySelector(
+    selector
+  ).style.animation = `button-shake infinite ${delay}`;
+  setTimeout(function() {
+    document.querySelector(selector).style.animation = "none";
+  }, duration);
+};
 
 const reflectChangesOnMap = () => {
   setCentralPin();
@@ -229,7 +228,6 @@ const addMarkerForParticipant = participant =>
     participant.name,
     getInitials(participant.name)
   ));
-
 
 // draw lines from every participant to central pin
 // for better visualisation of distances and locations
@@ -332,7 +330,9 @@ const lockRow = row => {
   Array.from(row.getElementsByTagName("input")).forEach(element => {
     if (element.name == "name") {
       // if name not provided - overwrite placeholder with a space
-      element.value = element.value ? `(${getInitials(element.value)}) ${element.value}` : " ";
+      element.value = element.value
+        ? `(${getInitials(element.value)}) ${element.value}`
+        : " ";
     }
     element.setAttribute("disabled", "disabled");
   });

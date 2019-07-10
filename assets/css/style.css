@@ -48,7 +48,7 @@ h2 {
 
 /* buttons animation */
 
-@keyframes button-pulse {
+@keyframes button-shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
   }
