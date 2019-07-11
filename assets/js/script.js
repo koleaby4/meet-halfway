@@ -13,6 +13,7 @@ function setUp() {
       showHelp();
     }
   }
+  setStateOfAddParticipantButton();
 }
 
 const numberOfParticipants = () =>
@@ -65,7 +66,7 @@ function setCentralPin() {
     marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ location: center }, function (results, status) {
+      geocoder.geocode({ location: center }, function(results, status) {
         if (status === "OK") {
           infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
@@ -116,7 +117,6 @@ function loadParticipantsFromLocalStorage() {
 /* add Name + Address input boxes
   followed by confirmation and deletion buttons */
 function addParticipantRow(withFocusOnButton = true) {
-
   // opting for string HTML over JavaScript DOM manipulations
   // because it is more compact and there is no risk of HTML injections
   var newRow = $(
@@ -140,6 +140,7 @@ function addParticipantRow(withFocusOnButton = true) {
   if (withFocusOnButton) {
     document.querySelector("input[name='name']").focus();
   }
+  setStateOfAddParticipantButton();
 }
 
 // delete a participant and trigger map updates
@@ -148,9 +149,17 @@ const deleteParticipantRow = event => {
   const participantId = div.id;
   deleteParticipantFromLocalStorage(participantId);
   div.remove();
+  setStateOfAddParticipantButton();
   deleteMarker(participantId);
 
   reflectChangesOnMap();
+};
+
+const setStateOfAddParticipantButton = () => {
+  const shouldBeDisabled =
+    document.querySelectorAll(".confirm-participant-button").length > 0;
+
+  document.querySelector(".add-participant-button").disabled = shouldBeDisabled;
 };
 
 const deleteMarker = participantId => {
@@ -192,15 +201,19 @@ const confirmParticipant = button => {
     addParticipantRow(true);
   }
 
-  shakeElement('.map-view-float-button img', 5, 2)
-
+  setStateOfAddParticipantButton();
+  shakeElement(".map-view-float-button img", 5, 2);
 };
 
 const shakeElement = (selector, resetAfter, delay) => {
-  document.querySelector(selector).style.animation = `button-pulse 1s ease-in-out ${delay}s`
+  document.querySelector(
+    selector
+  ).style.animation = `button-pulse 1s ease-in-out ${delay}s`;
   // reset animation - so we could use it again
-  setTimeout(function () { document.querySelector(selector).style.animation = 'none' }, resetAfter * 1000);
-}
+  setTimeout(function() {
+    document.querySelector(selector).style.animation = "none";
+  }, resetAfter * 1000);
+};
 
 const reflectChangesOnMap = () => {
   setCentralPin();
@@ -227,7 +240,6 @@ const addMarkerForParticipant = participant =>
     participant.name,
     getInitials(participant.name)
   ));
-
 
 // draw lines from every participant to central pin
 // for better visualisation of distances and locations
@@ -330,7 +342,9 @@ const lockRow = row => {
   Array.from(row.getElementsByTagName("input")).forEach(element => {
     if (element.name == "name") {
       // if name not provided - overwrite placeholder with a space
-      element.value = element.value ? `(${getInitials(element.value)}) ${element.value}` : " ";
+      element.value = element.value
+        ? `(${getInitials(element.value)}) ${element.value}`
+        : " ";
     }
     element.setAttribute("disabled", "disabled");
   });
