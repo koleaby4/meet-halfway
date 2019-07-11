@@ -18,6 +18,7 @@ Our typical customer is a socially active person 15+ years old
 who is planning to organise a meeting with family members, friends, colleagues of business counterparts.
 
 The customer would have names and addresses of the meeting participants and would want to be able to:
+
 1. add / remove participants
 2. see their names and location on the maps
 3. see central location (centroid) as soon as 2 or more participants are added
@@ -26,7 +27,6 @@ The customer would have names and addresses of the meeting participants and woul
 6. restore previously confirmed participants in case browsing session was interrupted
 
 Depending on circumstances, our customers want to be able to comfortably use the website from both desktop and mobile devices.
-
 
 ## User Stories
 
@@ -53,6 +53,17 @@ Examples:
 - [Display Google maps [mobile]](https://github.com/koleaby4/meet-halfway/issues/5)
 - [Form for adding participants](https://github.com/koleaby4/meet-halfway/issues/4)
 
+## Font and colour choices
+
+Because core functionality of the application is relying on interaction with google maps it was needed to allocate a major part of the screen space for map rendering. Keeping in mind that Google maps utilise a wide range of colours, our designs had to be neutral and non-distracting.
+As a result, the following conventional colours were chosen:
+
+- dark grey for background
+- green for confirmation and addition buttons
+- red for deletion and conveying error messages
+
+It was decided to use Roboto Google font because its pure geometric forms and friendly curves result in clear and and functional visuals.
+
 ## Why search of nearby places has been removed?
 
 One of the initial implementations allowed users to search for nearby places within 500m from central pin.
@@ -71,34 +82,36 @@ Functional tests have been carried out manually on regular basis.
 Special attention was paid to cross-browser and cross-platform compatibility by using:
 
 - Physical devices
-    1. Windows10 & Chrome (desktop)
-    2. Windows10 & IE11 (desktop)
-    3. Google Pixel 2 & Chrome (mobile)
+  1. Windows10 & Chrome (desktop)
+  2. Windows10 & IE11 (desktop)
+  3. Google Pixel 2 & Chrome (mobile)
 - Virtual devices: Apple iPhone X via [SauceLabs](https://saucelabs.com)
 
 Both positive and error flows were tested. <br>
 User-friendly error messages were implemented to be shown to the customers when:
-* Addresses were not entered by the user or were not found by Google Maps API
-* Service requests failed for technical reasons.
+
+- Addresses were not entered by the user or were not found by Google Maps API
+- Service requests failed for technical reasons.
 
 Automated tests using [cypress](https://www.cypress.io) have been added to landing and services sections.
 We also created a task to [add more automated tests](https://github.com/koleaby4/meet-halfway/issues/28) in the future.
 
 Two accessibility scanners were used to validate website:
-  - [aXe](https://www.deque.com/axe)
-  - [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+
+- [aXe](https://www.deque.com/axe)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
 Finally, a series of peer reviews helped identifying additional issues such as:
-  - A number of orthographic mistakes
-  - Gaps in documentation
-  - Compatibility issues ([Issue 26](https://github.com/koleaby4/meet-halfway/issues/26))
+
+- A number of orthographic mistakes
+- Gaps in documentation
+- Compatibility issues ([Issue 26](https://github.com/koleaby4/meet-halfway/issues/26))
 
 ### Known issues
 
 All known defects have been captured as GitHub issues and [marked by 'bug' label](https://github.com/koleaby4/meet-halfway/labels/bug).
 <br>As part of the project work we've addressed some of the issues found in testing.
 <br>We continue investigation of the remaining open issues such as [Website does not work in Edge and IE11](https://github.com/koleaby4/meet-halfway/issues/26).
-
 
 ## How to run cypress tests
 
@@ -120,16 +133,14 @@ To execute tests:
 Website had been published into GitHub pages by following instructions provided in<br>
 [Configuring a publishing source for GitHub Pages](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages).
 
-The instructions are very clear and trying to re-write them in my own words:
-    1.  Won't make them any better
-    2.  Will violate [KISS principles](https://en.wikipedia.org/wiki/KISS_principle)
+The instructions are very clear and trying to re-write them in my own words: 1. Won't make them any better 2. Will violate [KISS principles](https://en.wikipedia.org/wiki/KISS_principle)
 
 ## How to open it locally
 
 1. Navigate to project repository: `https://github.com/koleaby4/meet-halfway`
 2. Follow [GitHub cloning instructions](https://help.github.com/en/articles/cloning-a-repository) to download or clone source files
 3. Navigate to the project folder and open `config.js` file. Replace apiKey with your own Google Maps API key
-    <br>(Google maps services are not free, so key provided with this project's source codes have been restricted to only with for specific domains)
+   <br>(Google maps services are not free, so key provided with this project's source codes have been restricted to only with for specific domains)
 4. Navigate to the project folder and open `index.html` in your web browser
 
 ## Validations
@@ -140,7 +151,7 @@ The instructions are very clear and trying to re-write them in my own words:
 2. CSS validations:
    - [User story](https://github.com/koleaby4/meet-halfway/issues/16)
    - [Full report](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkoleaby4.github.io%2Fmeet-halfway%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-   please note that existing failures are from 3rd party libraries.
+     please note that existing failures are from 3rd party libraries.
 
 ## Tools and technologies used
 
@@ -179,15 +190,15 @@ The instructions are very clear and trying to re-write them in my own words:
 
 1. [Shake pattern](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_shake)
 
-
 ## Acknowledgements
 
 Special thank you to the people who guided and supported me during planning, execution and testing of this project:
-   - Anna Greaves
-   - Mario Aslau
-   - Sergio Rosas
-   - Natalie Marleny
-   - Simen Daehlin (mentor)
+
+- Anna Greaves
+- Mario Aslau
+- Sergio Rosas
+- Natalie Marleny
+- Simen Daehlin (mentor)
 
 ## Disclaimer
 
