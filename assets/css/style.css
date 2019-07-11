@@ -117,7 +117,7 @@ h2 {
   height: 100vh;
   color: rgb(215, 215, 215);
   background: radial-gradient(
-      rgba(0, 0, 0, 0.70) 0%,
+      rgba(0, 0, 0, 0.7) 0%,
       rgba(153, 218, 255, 0) 100%
     ),
     url("../images/landing-background.jpg"); /* radial scrim and background image */
@@ -211,7 +211,6 @@ from Who-is-coming section MAP view */
   right: 25px;
   border-radius: 5px;
   text-align: center;
-  z-index: 1;
 }
 
 .map-view-float-button img {
@@ -294,8 +293,8 @@ from MAP view to Who-is-coming section */
   position: absolute;
   width: 2rem;
   height: 2rem;
-  bottom: 25px;
-  left: 15px;
+  top: 10px;
+  right: 10px;
   background-color: #62c462;
   border-radius: 5px;
   text-align: center;
