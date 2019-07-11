@@ -274,6 +274,7 @@ from Who-is-coming section MAP view */
 
 .add-participant-button {
   margin-bottom: 20px;
+  display: none;
 }
 
 /* MAP VIEW */

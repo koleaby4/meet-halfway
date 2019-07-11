@@ -155,11 +155,15 @@ const deleteParticipantRow = event => {
   reflectChangesOnMap();
 };
 
+// display add-participant button
+// only when all participants are confirmed / deleted
 const setStateOfAddParticipantButton = () => {
-  const shouldBeDisabled =
-    document.querySelectorAll(".confirm-participant-button").length > 0;
+  const shouldBeShown =
+    document.querySelectorAll(".confirm-participant-button").length == 0;
 
-  document.querySelector(".add-participant-button").disabled = shouldBeDisabled;
+  document.querySelector(
+    ".add-participant-button"
+  ).style.display = shouldBeShown ? "inline" : "none";
 };
 
 const deleteMarker = participantId => {
