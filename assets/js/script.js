@@ -66,7 +66,7 @@ function setCentralPin() {
     marker.addListener("click", () => {
       map.setZoom(18);
       map.setCenter(marker.getPosition());
-      geocoder.geocode({ location: center }, function(results, status) {
+      geocoder.geocode({ location: center }, function (results, status) {
         if (status === "OK") {
           infowindow.setContent(getPrintableAddress(results[0], center));
           infowindow.open(map, marker);
@@ -114,8 +114,8 @@ function loadParticipantsFromLocalStorage() {
   });
 }
 
-/* add Name + Address input boxes
-  followed by confirmation and deletion buttons */
+// add Name + Address input boxes
+// followed by confirmation and deletion buttons */
 function addParticipantRow(withFocusOnButton = true) {
   // opting for string HTML over JavaScript DOM manipulations
   // because it is more compact and there is no risk of HTML injections
@@ -201,6 +201,8 @@ const confirmParticipant = button => {
     reflectChangesOnMap();
   });
 
+  // restrict number of unconfirmed participants to force users to confirm their inputs
+  // before adding more people
   if (document.querySelectorAll(".confirm-participant-button").length < 2) {
     addParticipantRow(true);
   }
@@ -214,7 +216,7 @@ const shakeElement = (selector, resetAfter, delay) => {
     selector
   ).style.animation = `button-pulse 1s ease-in-out ${delay}s`;
   // reset animation - so we could use it again
-  setTimeout(function() {
+  setTimeout(function () {
     document.querySelector(selector).style.animation = "none";
   }, resetAfter * 1000);
 };
