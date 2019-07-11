@@ -1,4 +1,4 @@
 {
-  "baseUrl": "https://koleaby4.github.io/meet-halfway/",
+  "baseUrl": "http://127.0.0.1:5500",
   "ignoreTestFiles": "**/examples/*.*"
 }

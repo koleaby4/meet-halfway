@@ -7,4 +7,6 @@ export const assertModalContent = () => {
   });
 };
 
-export const closeHelpModal = () => cy.contains("Cool").click();
+export const closeHelpModal = () => cy.contains("Cool").click().then(() =>
+  cy.get(".swal2-container").should('not.exist')
+)
