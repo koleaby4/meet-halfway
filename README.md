@@ -112,6 +112,8 @@ Finally, a series of peer reviews helped identifying additional issues such as:
 All known defects have been captured as GitHub issues and [marked by 'bug' label](https://github.com/koleaby4/meet-halfway/labels/bug).
 <br>As part of the project work we've addressed some of the issues found in testing.
 <br>We continue investigation of the remaining open issues such as [Website does not work in Edge and IE11](https://github.com/koleaby4/meet-halfway/issues/26).
+That issue was caused by the use of ES6 features like [Classes](https://caniuse.com/#feat=es6-class) and [Arrow Functions](https://caniuse.com/#feat=arrow-functions), which are currently not fully supported by IE11.
+We expect that usage of [Babel](https://babeljs.io/) should be able to resolve that compatibility issue. Not resolved yet due to configuration complexity - still work in progress.
 
 ## How to run cypress tests
 
