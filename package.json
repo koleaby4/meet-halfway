@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "This project builds website for people, who want to find a location for meeting geographically distributed people.",
   "main": "index.html",
-  "dependencies": {},
   "devDependencies": {
-    "cypress": "^3.3.2"
+    "cypress": "^9.1.1"
   },
   "scripts": {
     "test": "test",
